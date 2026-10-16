@@ -52,8 +52,11 @@ Bảy loại dữ liệu dưới đây **chỉ có một nguồn đúng**. ⛔ K
 | **Cơ sở** | `/chi-nhanh/` — **7 cơ sở**: 2 bệnh viện + 5 viện thẩm mỹ | hero local · footer | R3 |
 | **Khách hàng thực tế** | `/case-thuc-te/` | màn 5 | R5 |
 | **Ảnh trước – sau** | `/hinh-anh-khach-hang/` — 9 nhóm, đã khai consent | màn 5 | R5 · R12 |
+| **Kho ảnh nội bộ** | **Album Kangnam** `hcigroup.vn/app/albumkn/` — thư viện theo chủ đề + tag, **cần đăng nhập** | màn 5 | R5 |
 | **Giá** | `/bang-gia/` | màn 7 | — |
 | **Ưu đãi** | `/uu-dai/` | màn 7 · hero | — |
+
+⛔ **Ảnh nằm trong kho nội bộ không đồng nghĩa đã có consent** — kho là chỗ lưu ảnh, không phải chỗ cấp phép (R5 vẫn đòi văn bản đồng ý). Agent **không tự lấy ảnh từ kho**: người dùng đưa link ảnh + tiêu đề + mô tả + mốc thời gian chụp.
 
 Bản chụp mới nhất nằm ở `KF-01` §0 và `KF-14` mục 1. **Truy cập được thì tra lại; không truy cập được thì dùng bản chụp và nói rõ ngày chụp.** Site mới hơn file knowledge → **tin site**, rồi báo người dùng cập nhật file.
 

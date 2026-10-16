@@ -16,7 +16,8 @@ Nguồn gốc: `Agent-AdsOptimize-Kangnam/knowledge/kn-ho-so-thuong-hieu.md` v2.
 | **Dịch vụ** | menu chính của `benhvienthammykangnam.com.vn` (mục *Dịch vụ*) | màn 1 · 3 · bottom sheet | **R2** |
 | **Cơ sở** | `/chi-nhanh/` | hero local · footer | **R3** |
 | **Khách hàng thực tế (case)** | `/case-thuc-te/` | màn 5 | **R5** |
-| **Ảnh trước – sau** | `/hinh-anh-khach-hang/` | màn 5 | **R5** · **R12** |
+| **Ảnh trước – sau** (công khai) | `/hinh-anh-khach-hang/` | màn 5 | **R5** · **R12** |
+| **Kho ảnh nội bộ** | **Album Kangnam** — https://hcigroup.vn/app/albumkn/ *(cần đăng nhập)* | màn 5 | **R5** |
 | **Giá** | `/bang-gia/` | màn 7 | — |
 | **Ưu đãi** | `/uu-dai/` | màn 7 · hero | — |
 

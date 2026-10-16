@@ -2,6 +2,26 @@
 
 ---
 
+## v1.2.2 — 2026-10-16 · nối kho ảnh nội bộ Album Kangnam
+
+Trang công khai `/case-thuc-te/` vẫn trống, nhưng **ảnh case đã có sẵn** trong kho nội bộ: **Album Kangnam** — <https://hcigroup.vn/app/albumkn/> (*"Thư Viện Ảnh Theo Chủ Đề"* của HCI Group). Đã nối nguồn này vào tri thức.
+
+**App có gì dùng được:** Chủ đề/Album (gom theo dịch vụ hoặc chiến dịch) · **thẻ tag** (lọc nhanh) · tiêu đề + mô tả từng ảnh · ngày tải lên · kích thước · độ phân giải · chia sẻ album / chia sẻ thẻ tag. Có đăng nhập, phân quyền (Quản trị viên · Biên tập viên · Thành viên) và **API cho ứng dụng ngoài** (cần khoá API do Quản trị viên cấp và API đang bật).
+
+**Hai luật mới ghi vào bộ não:**
+- ⛔ **Ảnh trong kho ≠ đã có consent.** Kho là chỗ *lưu* ảnh, không phải chỗ *cấp phép* — rào **R5** vẫn đòi văn bản đồng ý của từng khách.
+- **Agent không tự lấy ảnh từ kho** (cần đăng nhập / khoá API). Người làm landing chọn ảnh rồi đưa agent **link ảnh + tiêu đề + mô tả + mốc thời gian chụp**.
+
+**Đề xuất giải quyết luôn việc còn treo số 3** (bảng kê consent): gắn mỗi ảnh case một trong ba tag — `consent-ok` · `consent-cho` · `consent-het-han`, thêm `phap-che-duyet` khi Pháp chế duyệt hình. Khi đó **bộ lọc tag của app chính là bảng kê consent**, không phải dựng file riêng.
+
+### Sửa gì
+- `KF-14` → thêm **mục 5.1 Kho ảnh nội bộ** (cấu trúc, cách bàn giao cho agent, quy ước tag); mục 4 đổi từ *"đây là mục chặn số 1"* sang *"lấy ảnh từ kho nội bộ, `/case-thuc-te/` là nơi publish"*; mục 9 đổi thứ tự việc còn thiếu.
+- `KF-01` §0 + `SYSTEM-PROMPT` §1.1 → thêm dòng **Kho ảnh nội bộ**, kèm hai luật trên.
+- `SYSTEM-PROMPT-NGAN` → thêm vào mục Nguồn dữ liệu; nén 7 chỗ để vẫn vừa: **7.984 / 8.000**.
+- Trang hướng dẫn → bảng Dữ liệu thêm dòng kho nội bộ (có link), thêm khối cảnh báo consent, đổi bảng *Việc còn treo*.
+
+---
+
 ## v1.2.1 — 2026-10-16 · thống nhất cách đặt tên
 
 Agent có hai tên song song: thư mục là `Agent-LDP-Kangnam` còn tài liệu gọi là *KLA — Kangnam Landing Agent*. **Thống nhất về `Agent-LDP-Kangnam`** cho mọi nơi.

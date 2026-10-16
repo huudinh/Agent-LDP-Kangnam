@@ -498,13 +498,20 @@ footer b{color:var(--ink-2)}
         <tr><td><b>Bác sĩ</b></td><td><code>/doi-ngu-bac-si/</code></td><td><span class="pill ok">có</span> 17 người kèm CCHN · chuyên khoa · cơ sở</td></tr>
         <tr><td><b>Dịch vụ</b></td><td>menu chính</td><td><span class="pill ok">có</span> 10 nhóm</td></tr>
         <tr><td><b>Cơ sở</b></td><td><code>/chi-nhanh/</code></td><td><span class="pill ok">có</span> 7: 2 bệnh viện + 5 viện thẩm mỹ</td></tr>
-        <tr class="hl"><td><b>Case thực tế</b></td><td><code>/case-thuc-te/</code></td><td><span class="pill stop">trống</span> màn 5 phải dùng ảnh trước–sau</td></tr>
+        <tr><td><b>Case thực tế</b> <span class="dim">(bản publish)</span></td><td><code>/case-thuc-te/</code></td><td><span class="pill warn">trống</span> chưa nạp ca nào lên trang công khai</td></tr>
         <tr><td><b>Ảnh trước–sau</b></td><td><code>/hinh-anh-khach-hang/</code></td><td><span class="pill ok">có</span> 9 nhóm, đã khai consent</td></tr>
+        <tr class="hl"><td><b>Kho ảnh nội bộ</b> <span class="dim">(nguồn làm việc)</span></td><td><a href="https://hcigroup.vn/app/albumkn/" target="_blank" rel="noopener"><b>Album Kangnam ↗</b></a></td><td><span class="pill ok">có</span> thư viện theo chủ đề + thẻ tag · <b>cần đăng nhập</b></td></tr>
         <tr><td>Giá · ưu đãi</td><td><code>/bang-gia/</code> · <code>/uu-dai/</code></td><td><span class="pill warn">động</span> ⛔ không dùng số cũ</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="dim" style="margin-top:12px">Chụp lại: <code>python tools/fetch-du-lieu.py --out out/</code> —
+  <div class="note stop" style="margin-top:14px">
+    <b>Ảnh nằm trong kho nội bộ KHÔNG đồng nghĩa đã có consent.</b>
+    <p style="margin:8px 0 0;font-size:14px">Kho là chỗ <i>lưu</i> ảnh, không phải chỗ <i>cấp phép</i> — rào <b>R5</b> vẫn đòi văn bản đồng ý của từng khách.
+      Agent cũng <b>không tự lấy ảnh được</b> (app cần đăng nhập, API cần khoá do Quản trị viên cấp):
+      bạn chọn ảnh trong album rồi đưa agent <b>link ảnh + tiêu đề + mô tả + mốc thời gian chụp</b>.</p>
+  </div>
+  <p class="dim" style="margin-top:12px">Chụp lại dữ liệu site: <code>python tools/fetch-du-lieu.py --out out/</code> —
     in ra tổng bác sĩ, ai thiếu CCHN, ai chưa verified, số cơ sở, case còn trống hay không.</p>
 </section>
 
@@ -522,8 +529,8 @@ footer b{color:var(--ink-2)}
       <thead><tr><th>Việc</th><th>Chặn gì</th><th>Ai chốt</th></tr></thead>
       <tbody>
         <tr class="hl"><td><b>KF-02</b> — danh sách bác sĩ được duyệt quảng bá <span class="dim">(chưa có file)</span></td><td>Màn 4 của mọi landing, và của mọi agent Kangnam khác</td><td>Pháp chế + Chuyên môn</td></tr>
-        <tr><td><b>Nạp case</b> lên <code>/case-thuc-te/</code></td><td>Màn 5 của mọi landing</td><td>Marketing + CSKH</td></tr>
-        <tr><td><b>Bảng kê ảnh ↔ consent ↔ hạn consent</b></td><td>Màn 5 — rào R5</td><td>CSKH + Pháp chế</td></tr>
+        <tr class="hl"><td><b>Đánh dấu consent trong Album Kangnam</b> <span class="dim">(quy ước tag <code>consent-ok</code> · <code>consent-cho</code> · <code>phap-che-duyet</code>)</span></td><td>Màn 5 — rào R5. Làm xong thì bộ lọc tag <b>chính là bảng kê consent</b></td><td>CSKH + Pháp chế</td></tr>
+        <tr><td><b>Nạp case</b> lên <code>/case-thuc-te/</code></td><td>Bản publish để khách tự kiểm chứng</td><td>Marketing + CSKH</td></tr>
         <tr><td><b>Chính sách bảo hành</b> bản chi tiết</td><td>Màn 7 — chỗ khách hỏi &ldquo;giá gồm những gì&rdquo;</td><td>Pháp chế</td></tr>
       </tbody>
     </table>

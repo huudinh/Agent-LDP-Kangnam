@@ -14,7 +14,8 @@ Version: 1.1 · Cập nhật: **2026-10-16** — đã nối với nguồn dữ l
 | **Dịch vụ** | menu *Dịch vụ* của site | ✅ 10 nhóm — xem `KF-01` mục 5 |
 | **Cơ sở** | `/chi-nhanh/` | ✅ **7 cơ sở** (2 bệnh viện + 5 viện thẩm mỹ) — xem `KF-01` mục 2 |
 | **Khách hàng thực tế (case)** | `/case-thuc-te/` | ⚠️ **đang trống** — trang báo *"Chưa có ca nào trong nhóm này."* |
-| **Ảnh trước – sau** | `/hinh-anh-khach-hang/` | ✅ có ảnh, **9 nhóm dịch vụ**, đã khai có đồng ý khách hàng |
+| **Ảnh trước – sau** (công khai) | `/hinh-anh-khach-hang/` | ✅ có ảnh, **9 nhóm dịch vụ**, đã khai có đồng ý khách hàng |
+| **Kho ảnh nội bộ** | **Album Kangnam** — https://hcigroup.vn/app/albumkn/ | ✅ **nguồn ảnh làm việc** — thư viện theo chủ đề + thẻ tag, cần đăng nhập |
 | Giá · ưu đãi | `/bang-gia/` · `/uu-dai/` | dữ liệu **động**, lấy lúc chạy |
 
 **Ký hiệu trạng thái dùng trong file:** ✅ **DUYỆT** (dùng được) · 🔶 **CHỜ DUYỆT** (có tư liệu, chưa duyệt → placeholder) · ⛔ **KHÔNG DÙNG** (vướng rào → ẩn khối) · ❓ **CHƯA CÓ**.
@@ -73,8 +74,8 @@ Version: 1.1 · Cập nhật: **2026-10-16** — đã nối với nguồn dữ l
 
 **Cấu trúc trang:** lọc theo **4 nhóm** — Tất cả · Nâng mũi · Nâng ngực · Cấy mỡ *(phần mô tả có nhắc cả chỉnh hình hàm mặt)*. Mỗi case gồm: ảnh trước & sau · **mốc thời gian chụp** (vd sau 7 ngày, sau 1 tháng) · bác sĩ chuyên khoa trực tiếp thực hiện · mô tả tình trạng ban đầu và phương pháp.
 
-> ⚠️ **Trạng thái 2026-10-16: trang đang trống** — hiển thị *"Chưa có ca nào trong nhóm này."*
-> → Màn 5 của mọi landing hiện phải dùng `[PLACEHOLDER: case từ /case-thuc-te/]` hoặc chuyển sang ảnh trước–sau ở mục 5. **Đây là mục chặn số 1 của agent lúc này.**
+> ⚠️ **Trạng thái 2026-10-16: trang công khai đang trống** — hiển thị *"Chưa có ca nào trong nhóm này."*
+> → **Lấy ảnh case từ kho nội bộ** (mục 5.1) thay vì chờ trang công khai. Trang `/case-thuc-te/` vẫn là nơi case **được publish**, nên ca nào đã lên đó thì ưu tiên dùng — khách tự kiểm chứng được.
 
 **Điều kiện dùng một case (đủ 4, thiếu một là không dùng):**
 1. **Văn bản đồng ý minh thị** (R5): loại dữ liệu · mục đích marketing · kênh · thời hạn · quyền rút lại.
@@ -104,7 +105,24 @@ Version: 1.1 · Cập nhật: **2026-10-16** — đã nối với nguồn dữ l
 4. ⛔ **BL giảm cân / Lipo 360:** không dùng ảnh so sánh **cơ thể** trên landing chạy ads (R12 + policy Meta/Google/TikTok) — dù trang gốc có ảnh. Thay bằng câu chuyện khách hàng (`KF-13` mục 3).
 5. Kiểm lại **consent còn hiệu lực** trước mỗi chiến dịch — khách có quyền rút lại.
 
-> 🔶 **Chưa có:** bảng kê ảnh ↔ mã case ↔ ngày consent ↔ hạn consent. Trang public không hiển thị dữ liệu này; cần CSKH/Pháp chế cung cấp bản nội bộ.
+### 5.1 Kho ảnh nội bộ — **Album Kangnam**
+> https://hcigroup.vn/app/albumkn/ · *"Thư Viện Ảnh Theo Chủ Đề"* của HCI Group
+
+**Đây là nguồn ảnh làm việc chính** khi `/case-thuc-te/` chưa có ca. Cấu trúc:
+
+| Trường | Dùng để |
+|---|---|
+| **Chủ đề / Album** | gom theo dịch vụ hoặc chiến dịch — chọn đúng album của dịch vụ landing |
+| **Thẻ tag** | lọc nhanh; dùng để đánh dấu trạng thái pháp lý (xem luật dưới) |
+| **Tiêu đề + mô tả ảnh** | ghi mốc thời gian chụp và tình trạng — **chép nguyên vào landing** |
+| Ngày tải lên · kích thước · độ phân giải | kiểm ảnh có đủ chất lượng cho hero `4/5` hay case `1/1` |
+
+**Cách dùng với agent:** app **cần đăng nhập**, có phân quyền (Quản trị viên · Biên tập viên · Thành viên) và API riêng cho ứng dụng ngoài — **phải có khoá API do Quản trị viên cấp và API đang bật**. Agent **không tự lấy ảnh được**: người làm landing chọn ảnh trong album, rồi đưa agent **link ảnh + tiêu đề + mô tả + mốc thời gian**. App có chức năng **chia sẻ album / chia sẻ thẻ tag** — dùng link chia sẻ đó để bàn giao cho agent hoặc cho dev.
+
+> ⛔ **Ảnh nằm trong kho nội bộ KHÔNG đồng nghĩa đã có consent.** Kho là chỗ *lưu* ảnh, không phải chỗ *cấp phép*. Rào **R5** vẫn đòi **văn bản đồng ý** của từng khách.
+> 🔧 **Đề xuất quy ước tag** để giải quyết luôn việc còn treo số 3: mỗi ảnh case gắn một trong ba tag — `consent-ok` (có văn bản đồng ý, còn hiệu lực) · `consent-cho` (đang xin) · `consent-het-han`. Thêm tag `phap-che-duyet` khi Pháp chế đã duyệt hình. Khi đó bộ lọc tag của app **chính là bảng kê consent**, không cần dựng file riêng.
+
+> 🔶 **Chưa có:** bảng kê ảnh ↔ mã case ↔ ngày consent ↔ hạn consent. Trang public không hiển thị dữ liệu này; hoặc dựng bằng quy ước tag ở trên, hoặc xin CSKH/Pháp chế bản nội bộ.
 
 ---
 
@@ -144,8 +162,8 @@ Version: 1.1 · Cập nhật: **2026-10-16** — đã nối với nguồn dữ l
 | # | Việc | Chặn gì |
 |---|---|---|
 | 1 | ★ **Lấy KF-02 — danh sách bác sĩ "được duyệt quảng bá"** (hiện chỉ được nhắc tới, chưa có file) | **Màn 4 của mọi landing** — và của mọi agent Kangnam khác |
-| 2 | **Nạp case lên `/case-thuc-te/`** (trang đang trống) | Màn 5 của **mọi** landing |
-| 3 | **Bảng kê ảnh ↔ consent ↔ hạn consent** (bản nội bộ) | Màn 5 — rào R5 |
+| 2 | **Nạp case lên `/case-thuc-te/`** (trang công khai đang trống — ảnh đã có sẵn trong kho nội bộ) | Màn 5 bản publish |
+| 3 | **Đánh dấu consent cho ảnh trong Album Kangnam** (quy ước tag ở mục 5.1) | Màn 5 — rào R5 |
 | 4 | **CCHN cho 4 bác sĩ còn thiếu** + xác nhận 6 bác sĩ `status` trống + **giải quyết lệch Louis Truong / Frankie Vu** | Màn 4 với các bác sĩ đó |
 | 5 | **Chính sách bảo hành bản chi tiết** | Màn 7 |
 | 6 | **Mốc hồi phục dạng khoảng** theo từng dịch vụ, bác sĩ xác nhận | Màn 6 + FAQ |
