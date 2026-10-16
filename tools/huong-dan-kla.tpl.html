@@ -70,12 +70,6 @@ header.top .dim{color:rgba(255,255,255,.62)}
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
   border-radius:999px;padding:5px 11px}
 .chip.on{color:var(--on-gold);background:var(--band-accent);border-color:var(--band-accent)}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.22);
-  border:1px solid rgba(255,255,255,.22);border-radius:var(--r);overflow:hidden;margin-top:24px}
-.kpi{background:rgba(255,255,255,.07);padding:13px 14px}
-.kpi b{display:block;font-size:13px;font-weight:800;color:var(--band-accent)}
-.kpi span{display:block;font-size:12px;color:rgba(255,255,255,.72);margin-top:2px}
-@media(max-width:620px){.kpis{grid-template-columns:1fr 1fr}}
 
 /* ---------- nav ---------- */
 nav.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
@@ -170,17 +164,6 @@ td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;col
 .note + .note{margin-top:10px}
 .note p:last-child{margin-bottom:0}
 
-/* ---------- sơ đồ 3 tầng ---------- */
-.flow{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:18px;box-shadow:var(--sh)}
-.tier{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
-.tier + .arrow{margin:10px 0 10px 13px;color:var(--ink-3);font-size:13px}
-.tier .n{width:28px;height:28px;border-radius:50%;background:var(--primary);color:var(--on-primary);
-  display:grid;place-content:center;font:800 13px var(--f)}
-.tier b{display:block;font-size:15px;color:var(--primary-ink)}
-.tier span{font-size:13.5px;color:var(--ink-2)}
-.thru{margin-top:16px;padding-top:13px;border-top:1px dashed var(--line);
-  font-size:13px;color:var(--ink-3);text-align:center}
 
 /* ---------- checklist ---------- */
 ul.check{list-style:none;margin:0;padding:0;display:grid;gap:2px}
@@ -191,8 +174,6 @@ ul.check label{font-size:14.5px;cursor:pointer}
 ul.check input:checked + label{color:var(--ink-3);text-decoration:line-through}
 
 /* ---------- misc ---------- */
-.lead-num{font:800 clamp(30px,6vw,42px)/1 var(--f);color:var(--gold-soft);
-  font-variant-numeric:tabular-nums;letter-spacing:-1px}
 .pill{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.05em;
   padding:3px 9px;border-radius:999px;text-transform:uppercase;white-space:nowrap}
 .pill.stop{background:var(--stop-bg);color:var(--primary-ink);border:1px solid var(--primary)}
@@ -250,14 +231,7 @@ footer b{color:var(--ink-2)}
       <span class="chip">7 lệnh</span>
       <span class="chip">Claude · ChatGPT · Gemini</span>
     </div>
-    <div class="kpis">
-      <div class="kpi"><b>CVR</b><span>lead / visit</span></div>
-      <div class="kpi"><b>Tỉ lệ kết nối</b><span>lead liên lạc được</span></div>
-      <div class="kpi"><b>Booking rate</b><span>booking / lead</span></div>
-      <div class="kpi"><b>Show-up rate</b><span>đến khám / booking</span></div>
-    </div>
-    <p class="dim" style="margin-top:12px">Bốn chỉ số trên là toàn bộ thước đo của agent.
-      Không tối ưu lượt xem, time-on-page hay độ &ldquo;đẹp&rdquo;.</p>
+    <p class="dim" style="margin-top:16px">Đo bằng bốn chỉ số: <b>CVR</b> · <b>tỉ lệ lead kết nối</b> · <b>booking</b> · <b>show-up</b>. Không tối ưu lượt xem, time-on-page hay độ &ldquo;đẹp&rdquo;.</p>
   </div>
 </header>
 
@@ -267,11 +241,10 @@ footer b{color:var(--ink-2)}
     <a href="#tri-thuc">Tri thức</a>
     <a href="#lenh">Lệnh</a>
     <a href="#prompt">Mẫu prompt</a>
-    <a href="#quy-trinh">Quy trình</a>
-    <a href="#hanh-vi">Luật hành vi</a>
-    <a href="#phap-ly">Cổng pháp lý</a>
-    <a href="#du-lieu">Nguồn dữ liệu</a>
+    <a href="#phap-ly">Trước khi publish</a>
+    <a href="#du-lieu">Dữ liệu</a>
     <a href="#con-treo">Việc còn treo</a>
+    <a href="#doc-sau">Đọc sâu</a>
   </div>
 </nav>
 
@@ -461,218 +434,75 @@ footer b{color:var(--ink-2)}
   </div>
 </section>
 
-<!-- ============ QUY TRÌNH ============ -->
-<section id="quy-trinh">
-  <div class="sec-h">
-    <span class="pre">Bộ não</span>
-    <h2>Quy trình 3 tầng &amp; 9 màn</h2>
-    <span class="bar"></span>
-    <p>Bắt buộc đúng thứ tự, không đảo, không bỏ tầng.</p>
-  </div>
-
-  <div class="flow">
-    <div class="tier"><div class="n">1</div><div>
-      <b>NGUỒN &amp; ĐỐI TƯỢNG</b>
-      <span>kênh · ad copy/keyword nguyên văn · tệp · nhiệt độ · mức nhận thức</span>
-    </div></div>
-    <p class="arrow">↓ khoá <b>message-match</b></p>
-    <div class="tier"><div class="n">2</div><div>
-      <b>TRẢI NGHIỆM LANDING</b>
-      <span>9 màn, mỗi màn trả lời đúng 1 câu hỏi trong đầu khách</span>
-    </div></div>
-    <p class="arrow">↓</p>
-    <div class="tier"><div class="n">3</div><div>
-      <b>CTA</b>
-      <span>tin cậy + lý do hành động bây giờ + điều xảy ra sau khi bấm</span>
-    </div></div>
-    <p class="thru">Xuyên suốt: mobile-first · cổng pháp lý · tracking → CRM</p>
-  </div>
-
-  <div class="note stop" style="margin-top:14px">
-    <b>Nhảy thẳng vào viết copy hay thiết kế mà bỏ Tầng 1 là lỗi loại thẳng.</b>
-    Không có ngoại lệ &ldquo;làm nhanh cho kịp chiến dịch&rdquo;.
-  </div>
-
-  <div class="tw" style="margin-top:20px">
-    <table>
-      <thead><tr><th>Màn</th><th>Câu hỏi của khách</th><th>Trust tối thiểu</th></tr></thead>
-      <tbody>
-        <tr><td><b>1</b> Hero</td><td>&ldquo;Có đúng thứ mình tìm không?&rdquo;</td><td>2–3 badge: bác sĩ · cơ sở cấp phép · con số thật</td></tr>
-        <tr><td><b>2</b> Vấn đề</td><td>&ldquo;Họ có hiểu mình không?&rdquo;</td><td>—</td></tr>
-        <tr><td><b>3</b> Giải pháp</td><td>&ldquo;Cách nào? Khác gì nơi khác?&rdquo;</td><td>công nghệ chính danh <span class="pill warn">R7</span></td></tr>
-        <tr><td><b>4</b> Người làm</td><td>&ldquo;Ai làm cho mình?&rdquo;</td><td>bác sĩ <span class="pill stop">R4</span></td></tr>
-        <tr><td><b>5</b> Bằng chứng</td><td>&ldquo;Người giống mình ra sao?&rdquo;</td><td>case có consent <span class="pill stop">R5</span></td></tr>
-        <tr><td><b>6</b> Quy trình &amp; an toàn</td><td>&ldquo;Mình sẽ trải qua những gì?&rdquo;</td><td>quy trình · vô khuẩn · hậu phẫu</td></tr>
-        <tr><td><b>7</b> Giá / Offer</td><td>&ldquo;Bao nhiêu? Có đáng không?&rdquo;</td><td>bảo hành, đặt <b>cạnh</b> giá</td></tr>
-        <tr><td><b>8</b> FAQ</td><td>&ldquo;Mình còn lo gì?&rdquo;</td><td>—</td></tr>
-        <tr><td><b>9</b> Chốt</td><td>&ldquo;Giờ làm gì?&rdquo;</td><td>giấy phép · cơ sở · NAP</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="dim" style="margin-top:12px"><b>Độ dài theo nhiệt độ:</b> Nóng / CDP → màn 1→4 hoặc 5→7→9 ·
-    Lạnh → đủ 9 màn · Google Search → màn 1 trả lời <b>trực tiếp</b> truy vấn.
-    Bắt khách đã sẵn sàng cuộn 9 màn là cách mất lead dễ nhất.</p>
-</section>
-
-<!-- ============ HÀNH VI ============ -->
-<section id="hanh-vi">
-  <div class="sec-h">
-    <span class="pre">Luật sinh ra agent này</span>
-    <h2>Hành vi trước, chữ sau</h2>
-    <span class="bar"></span>
-    <p>Cảm xúc đưa khách tới trang. <b>Ba rào cản</b> mới quyết định khách có điền form.
-      Mọi màn phải gỡ <b>đúng</b> rào cản của <b>đúng</b> chân dung — không gỡ chung chung cả ba.</p>
-  </div>
-
-  <div class="grid g3">
-    <div class="card">
-      <h3>① SỢ</h3>
-      <p style="font-size:14px">Đau không? Biến chứng không? Hỏng thì sao?</p>
-      <p class="dim" style="margin-bottom:0">Gỡ bằng: quy trình chuẩn y khoa · vô khuẩn · hội đồng chuyên môn · gói hậu phẫu</p>
-    </div>
-    <div class="card">
-      <h3>② NGỜ</h3>
-      <p style="font-size:14px">Bác sĩ có thật giỏi? Cơ sở có phép? Có giá ẩn?</p>
-      <p class="dim" style="margin-bottom:0">Gỡ bằng: giấy phép Bộ Y tế · CCHN · bảng giá công khai · bảo hành minh bạch</p>
-    </div>
-    <div class="card">
-      <h3>③ NGẠI</h3>
-      <p style="font-size:14px">Nghỉ bao lâu? <b>Người nhà có biết không?</b></p>
-      <p class="dim" style="margin-bottom:0">Gỡ bằng: mốc hồi phục dạng khoảng · <b>kênh liên hệ riêng tư</b> · hẹn giờ gọi lại</p>
-    </div>
-  </div>
-
-  <div class="note warn" style="margin-top:16px">
-    <b>Trục riêng tư là đặc thù của ngành này.</b> Mọi landing phải có kênh liên hệ riêng tư
-    <b>song song với form</b> — nút Zalo/chat cạnh form, dòng cam kết bảo mật ngay dưới nút submit.
-    Thiếu trục này là tự bỏ một phần lead, và phần bỏ mất thường là nhóm chịu chi nhất.
-  </div>
-
-  <div class="grid g2" style="margin-top:16px">
-    <div class="card">
-      <h3>Trả lời câu hỏi thật, không trả lời nghĩa đen</h3>
-      <p style="font-size:14px;margin-bottom:5px">&ldquo;Có đau không?&rdquo; → <i>Tôi có chịu nổi không?</i></p>
-      <p style="font-size:14px;margin-bottom:5px">&ldquo;Bao lâu thì đẹp?&rdquo; → <i>Khi nào tôi đi làm lại được?</i></p>
-      <p style="font-size:14px;margin-bottom:0">&ldquo;Bao nhiêu tiền?&rdquo; → <i>Có đáng với số tiền đó không?</i></p>
-    </div>
-    <div class="card">
-      <h3>⛔ Không khoét sâu nỗi sợ</h3>
-      <p style="font-size:14px;margin-bottom:0">Hai lý do, lý do sau nặng hơn: ① click đã trả tiền, trì hoãn câu trả lời
-        chỉ làm tăng bounce; ② <b>quảng cáo dịch vụ KCB không được gây hoang mang</b> — đó là rủi ro tuân thủ,
-        không chỉ là copy dở. Gọi tên nỗi lo rồi <b>trả lời ngay</b>.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ============ PHÁP LÝ ============ -->
 <section id="phap-ly">
   <div class="sec-h">
-    <span class="pre">Cổng chặn</span>
-    <h2>Pháp lý — fail = không xuất trang</h2>
+    <span class="pre">Hai cổng hay vướng nhất</span>
+    <h2>Trước khi publish</h2>
     <span class="bar"></span>
-    <p>Agent rà mọi output theo bảng rào <b>R0–R12</b>. Đây là tính năng, không phải lỗi:
-      agent dễ dãi ở các cổng này thì nó đang tạo rủi ro thay vì tạo lead.</p>
+    <p>Agent tự rà đủ bảng rào <b>R0–R12</b> và tự chấm scorecard — bạn không cần thuộc.
+      Nhưng hai cổng dưới đây cần <b>người</b> quyết, agent không tự gỡ được.</p>
   </div>
 
   <div class="note stop">
-    <b>Bác sĩ (R4) — bốn cổng, phải qua cả bốn.</b>
+    <b>① Bác sĩ (R4) — bốn cổng, phải qua cả bốn.</b>
     <p style="margin:8px 0 0;font-size:14px">
-      ① có trong <b>danh sách live</b> <code>/doi-ngu-bac-si/</code> — <i>trang hồ sơ còn sống không đồng nghĩa được dùng</i> ·
-      ② <b>đúng chuyên khoa VÀ đúng cơ sở</b> — bác sĩ Sài Gòn không lên landing Hà Nội ·
-      ③ <code>status: verified</code> và <b>có số CCHN</b> ·
-      ④ <b>có trong KF-02 — danh sách nội bộ &ldquo;được duyệt quảng bá&rdquo;</b>.
-    </p>
+      có trong <b>danh sách live</b> <code>/doi-ngu-bac-si/</code> · <b>đúng chuyên khoa VÀ đúng cơ sở</b>
+      (bác sĩ Sài Gòn không lên landing Hà Nội) · <code>status: verified</code> và <b>có CCHN</b> ·
+      <b>có trong KF-02 — danh sách nội bộ &ldquo;được duyệt quảng bá&rdquo;</b>.</p>
     <p style="margin:8px 0 0;font-size:14px"><b>Cờ <code>verified</code> trên web ≠ Pháp chế đã duyệt.</b>
-      Ba trường hợp đang lệch giữa web và danh sách nội bộ (Louis Truong · Đỗ Minh Vương · Alice Tran).
-      Lệch → <b>dừng, hỏi Pháp chế</b>, không tự chọn bên.</p>
+      Ba trường hợp đang lệch: Louis Truong · Đỗ Minh Vương · Alice Tran. Lệch → <i>dừng, hỏi Pháp chế</i>.</p>
   </div>
 
-  <div class="tw" style="margin-top:16px">
-    <table>
-      <thead><tr><th>Rào</th><th>Luật</th></tr></thead>
-      <tbody>
-        <tr class="hl"><td><b>R3</b> tuyến cơ sở</td><td><b>Đại phẫu chỉ tại tuyến bệnh viện</b> (190 Trường Chinh HN · 666 CMT8 TP.HCM).
-          5 viện thẩm mỹ: da · spa · tiểu phẫu + tư vấn + tái khám. Landing local phải ghi rõ
-          <i>&ldquo;tư vấn/đặt khám tại [viện thẩm mỹ], phẫu thuật tại [tuyến bệnh viện]&rdquo;</i>.
-          Để mặc là <b>vượt phạm vi giấy phép</b>, không phải chuyện hiệu suất.</td></tr>
-        <tr><td><b>R1</b> cam kết</td><td>⛔ &ldquo;số 1 / tốt nhất / cam kết 100% / không biến chứng / vĩnh viễn / không đau / không để lại sẹo&rdquo;.
-          Mốc hồi phục luôn dạng <b>khoảng</b> + <i>&ldquo;tùy cơ địa mỗi người&rdquo;</i> — ⛔ câu &ldquo;3 ngày là đi làm được&rdquo;.</td></tr>
-        <tr><td><b>R7</b> thuốc &amp; vật tư</td><td>⛔ Không nêu tên thương mại thuốc, filler, botox. Chỉ nêu thiết bị cơ sở thực sự có.</td></tr>
-        <tr><td><b>R5 · R12</b> hình ảnh</td><td>Case phải có <b>văn bản đồng ý</b>. ⛔ Before/after cơ thể và ngôn từ miệt thị cân nặng
-          (vi phạm cả policy Meta / Google / TikTok).</td></tr>
-        <tr><td><b>R9</b> GXNNDQC</td><td>Nội dung quảng cáo dịch vụ KCB cần giấy xác nhận trước khi phát hành. Chưa có → ⚠️ <b>không bật chiến dịch</b>.</td></tr>
-      </tbody>
-    </table>
+  <div class="note warn" style="margin-top:10px">
+    <b>② Tuyến cơ sở (R3).</b> Đại phẫu chỉ tại <b>tuyến bệnh viện</b> — 190 Trường Chinh (HN) · 666 CMT8 (TP.HCM).
+    Năm viện thẩm mỹ: da · spa · tiểu phẫu + tư vấn + tái khám. Landing local phải ghi rõ
+    <i>&ldquo;tư vấn/đặt khám tại [viện thẩm mỹ], phẫu thuật tại [tuyến bệnh viện]&rdquo;</i> —
+    để mặc là <b>vượt phạm vi giấy phép</b>, không phải chuyện hiệu suất.
   </div>
 
-  <h3 style="font-size:16px;font-weight:800;color:var(--navy);margin:26px 0 10px">Checklist trước khi publish</h3>
+  <h3 style="font-size:16px;font-weight:800;color:var(--primary-ink);margin:26px 0 10px">Checklist trước khi publish</h3>
   <div class="card">
     <ul class="check" id="cl">
       <li><input type="checkbox" id="c1"><label for="c1">Mọi tên bác sĩ qua đủ <b>4 cổng R4</b></label></li>
-      <li><input type="checkbox" id="c2"><label for="c2">Dịch vụ của trang khớp <b>tuyến cơ sở</b> ghi ở footer (R3)</label></li>
-      <li><input type="checkbox" id="c3"><label for="c3">Rà toàn bộ copy qua <b>bảng từ cấm</b>; mọi con số có dấu <code>*</code> + chú thích</label></li>
-      <li><input type="checkbox" id="c4"><label for="c4">Mốc hồi phục dạng <b>khoảng</b> + &ldquo;tùy cơ địa mỗi người&rdquo;</label></li>
+      <li><input type="checkbox" id="c2"><label for="c2">Dịch vụ của trang khớp <b>tuyến cơ sở</b> ghi ở footer</label></li>
+      <li><input type="checkbox" id="c3"><label for="c3">Mọi con số có nguồn, có dấu <code>*</code> + chú thích &ldquo;tùy cơ địa&rdquo;</label></li>
+      <li><input type="checkbox" id="c4"><label for="c4">Mốc hồi phục dạng <b>khoảng</b>, không phải mốc cứng</label></li>
       <li><input type="checkbox" id="c5"><label for="c5">Mọi ảnh case <b>có consent còn hiệu lực</b>; chưa có → ô ảnh tạm, không stock/AI</label></li>
       <li><input type="checkbox" id="c6"><label for="c6">Giá ghi <b>&ldquo;tham khảo&rdquo;</b>, lấy động từ <code>/bang-gia/</code></label></li>
       <li><input type="checkbox" id="c7"><label for="c7">Form có <b>checkbox đồng ý dữ liệu cá nhân</b> + link chính sách</label></li>
-      <li><input type="checkbox" id="c8"><label for="c8">Sticky bar <b>Gọi | Zalo | Đặt lịch</b> hoạt động thật trên máy thật</label></li>
+      <li><input type="checkbox" id="c8"><label for="c8">Sticky bar <b>Gọi | Zalo | Đặt lịch</b> chạy thật trên máy thật</label></li>
       <li><input type="checkbox" id="c9"><label for="c9">Đã xin <b>GXNNDQC</b> (R9)</label></li>
       <li><input type="checkbox" id="c10"><label for="c10">⚠️ <b>Mọi <code>[CHỜ CẬP NHẬT]</code> và ô ảnh tạm đã biến mất hoặc khối đã bị ẩn</b></label></li>
     </ul>
     <p class="dim" style="margin:12px 0 0">Ô cuối là bài học thật: landing Mũi v3 từng để <code>chờ KF-01</code>,
-      <code>Chưa có giá</code> lọt lên production. Placeholder nội bộ lộ ra trang thật làm mất niềm tin
-      nặng hơn cả thiếu thông tin.</p>
+      <code>Chưa có giá</code> lọt lên production.</p>
   </div>
-
-  <h3 style="font-size:16px;font-weight:800;color:var(--navy);margin:26px 0 10px">Scorecard</h3>
-  <div class="tw">
-    <table>
-      <thead><tr><th>Tiêu chí</th><th class="num">Điểm</th></tr></thead>
-      <tbody>
-        <tr><td>Message-match với ad / keyword / tệp</td><td class="num">20</td></tr>
-        <tr><td>Luồng CX đúng chuỗi câu hỏi và đúng nhiệt độ</td><td class="num">15</td></tr>
-        <tr><td>Trust đủ mật độ và <b>đúng thứ tự theo BL</b></td><td class="num">20</td></tr>
-        <tr><td>CTA: đủ 4 câu hỏi · đúng nấc · form ngắn · thank-you</td><td class="num">20</td></tr>
-        <tr><td>Mobile-first</td><td class="num">15</td></tr>
-        <tr><td>UI nhất quán Design System</td><td class="num">10</td></tr>
-        <tr class="hl"><td><b>Cổng pháp lý</b></td><td class="num"><b>fail = 0 toàn bài</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="dim" style="margin-top:12px"><b>≥ 80</b> giao · <b>65–79</b> sửa theo danh sách lỗi · <b>&lt; 65</b> làm lại từ Tầng 1.
-    Điểm cao mà cổng pháp lý fail thì vẫn <b>không giao</b> — điểm chỉ nói bố cục và copy đã ổn.</p>
 </section>
 
 <!-- ============ DỮ LIỆU ============ -->
 <section id="du-lieu">
   <div class="sec-h">
     <span class="pre">Nguồn sự thật</span>
-    <h2>Chỉ một nguồn đúng cho mỗi loại</h2>
+    <h2>Dữ liệu agent phải tra</h2>
     <span class="bar"></span>
-    <p>Agent tra site <b>tại thời điểm chạy</b> — không lấy từ trí nhớ, không lấy từ landing cũ,
-      không lấy từ file tri thức của agent khác. Số liệu dưới đây là bản chụp <b>16/10/2026</b>.</p>
+    <p>Mỗi loại <b>chỉ một nguồn đúng</b>, tra tại thời điểm chạy. Bản chụp <b>16/10/2026</b>.</p>
   </div>
   <div class="tw">
     <table>
-      <thead><tr><th>Dữ liệu</th><th>Nguồn duy nhất</th><th>Trạng thái</th></tr></thead>
+      <thead><tr><th>Dữ liệu</th><th>Nguồn</th><th>Trạng thái</th></tr></thead>
       <tbody>
-        <tr><td><b>Bác sĩ</b></td><td><code>/doi-ngu-bac-si/</code><br><span class="dim">JSON <code>kn-doctors-data</code> nhúng trong trang</span></td>
-          <td><span class="pill ok">có</span> 17 người kèm CCHN · chuyên khoa · cơ sở · cờ verified</td></tr>
-        <tr><td><b>Dịch vụ</b></td><td>menu chính của site</td><td><span class="pill ok">có</span> 10 nhóm</td></tr>
-        <tr><td><b>Cơ sở</b></td><td><code>/chi-nhanh/</code></td><td><span class="pill ok">có</span> 7 cơ sở: 2 bệnh viện + 5 viện thẩm mỹ</td></tr>
-        <tr class="hl"><td><b>Khách hàng thực tế</b></td><td><code>/case-thuc-te/</code></td><td><span class="pill stop">trống</span> &ldquo;Chưa có ca nào trong nhóm này&rdquo;</td></tr>
-        <tr><td><b>Ảnh trước – sau</b></td><td><code>/hinh-anh-khach-hang/</code></td><td><span class="pill ok">có</span> 9 nhóm, đã khai consent</td></tr>
-        <tr><td>Giá · ưu đãi</td><td><code>/bang-gia/</code> · <code>/uu-dai/</code></td><td><span class="pill warn">động</span> lấy lúc chạy, ⛔ không dùng số cũ</td></tr>
+        <tr><td><b>Bác sĩ</b></td><td><code>/doi-ngu-bac-si/</code></td><td><span class="pill ok">có</span> 17 người kèm CCHN · chuyên khoa · cơ sở</td></tr>
+        <tr><td><b>Dịch vụ</b></td><td>menu chính</td><td><span class="pill ok">có</span> 10 nhóm</td></tr>
+        <tr><td><b>Cơ sở</b></td><td><code>/chi-nhanh/</code></td><td><span class="pill ok">có</span> 7: 2 bệnh viện + 5 viện thẩm mỹ</td></tr>
+        <tr class="hl"><td><b>Case thực tế</b></td><td><code>/case-thuc-te/</code></td><td><span class="pill stop">trống</span> màn 5 phải dùng ảnh trước–sau</td></tr>
+        <tr><td><b>Ảnh trước–sau</b></td><td><code>/hinh-anh-khach-hang/</code></td><td><span class="pill ok">có</span> 9 nhóm, đã khai consent</td></tr>
+        <tr><td>Giá · ưu đãi</td><td><code>/bang-gia/</code> · <code>/uu-dai/</code></td><td><span class="pill warn">động</span> ⛔ không dùng số cũ</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="card" style="margin-top:14px">
-    <h3>Chụp lại dữ liệu bất cứ lúc nào</h3>
-    <pre style="margin:8px 0 10px;overflow-x:auto;background:var(--surface-2);border:1px solid var(--line-2);border-radius:var(--r);padding:12px;font:400 12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace">python tools/fetch-du-lieu.py --out out/</pre>
-    <p class="dim" style="margin-bottom:0">In ra: tổng bác sĩ · <b>ai thiếu CCHN</b> · <b>ai chưa verified</b> ·
-      số bác sĩ theo nhóm chuyên khoa · số cơ sở · case còn trống hay không · số nhóm ảnh.
-      Script <b>không tự sửa tri thức</b> — mỗi thay đổi về bác sĩ/cơ sở/case đều chạm rào pháp lý nên cần người đối chiếu.</p>
-  </div>
+  <p class="dim" style="margin-top:12px">Chụp lại: <code>python tools/fetch-du-lieu.py --out out/</code> —
+    in ra tổng bác sĩ, ai thiếu CCHN, ai chưa verified, số cơ sở, case còn trống hay không.</p>
 </section>
 
 <!-- ============ CÒN TREO ============ -->
@@ -681,39 +511,49 @@ footer b{color:var(--ink-2)}
     <span class="pre">Trước khi dùng thật</span>
     <h2>Bốn việc đang chặn agent</h2>
     <span class="bar"></span>
-    <p>Agent chạy được ngay, nhưng sẽ trả nhiều <code>[CHỜ CẬP NHẬT]</code> cho tới khi có đủ bốn mục này.
+    <p>Agent chạy được ngay, nhưng còn trả <code>[CHỜ CẬP NHẬT]</code> cho tới khi có đủ bốn mục này.
       Mỗi <code>[CHỜ CẬP NHẬT]</code> là một chỗ nếu bịa thì có rủi ro — đó là danh sách việc, không phải lỗi của agent.</p>
   </div>
-  <div class="grid g2">
-    <div class="card">
-      <span class="lead-num">1</span>
-      <h3 style="margin-top:6px">KF-02 — danh sách bác sĩ được duyệt quảng bá</h3>
-      <p class="dim" style="margin-bottom:0">Hiện mới chỉ được nhắc tới, <b>chưa có file</b>.
-        Chặn màn 4 của mọi landing — và của mọi agent Kangnam khác. <b>Pháp chế + Chuyên môn</b>.</p>
-    </div>
-    <div class="card">
-      <span class="lead-num">2</span>
-      <h3 style="margin-top:6px">Nạp case lên <code>/case-thuc-te/</code></h3>
-      <p class="dim" style="margin-bottom:0">Trang đang trống → màn 5 của mọi landing phải dùng ảnh
-        từ <code>/hinh-anh-khach-hang/</code> hoặc placeholder. <b>Marketing + CSKH</b>.</p>
-    </div>
-    <div class="card">
-      <span class="lead-num">3</span>
-      <h3 style="margin-top:6px">Bảng kê ảnh ↔ consent ↔ hạn consent</h3>
-      <p class="dim" style="margin-bottom:0">Trang public khai &ldquo;có đồng ý&rdquo; nhưng không lộ dữ liệu kiểm chứng.
-        Rào R5. <b>CSKH + Pháp chế</b>.</p>
-    </div>
-    <div class="card">
-      <span class="lead-num">4</span>
-      <h3 style="margin-top:6px">Chính sách bảo hành bản chi tiết</h3>
-      <p class="dim" style="margin-bottom:0">Điều kiện · thời hạn · phạm vi theo nhóm dịch vụ.
-        Chặn màn 7 — chỗ khách hỏi &ldquo;giá đó gồm những gì&rdquo;. <b>Pháp chế</b>.</p>
-    </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Việc</th><th>Chặn gì</th><th>Ai chốt</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td><b>KF-02</b> — danh sách bác sĩ được duyệt quảng bá <span class="dim">(chưa có file)</span></td><td>Màn 4 của mọi landing, và của mọi agent Kangnam khác</td><td>Pháp chế + Chuyên môn</td></tr>
+        <tr><td><b>Nạp case</b> lên <code>/case-thuc-te/</code></td><td>Màn 5 của mọi landing</td><td>Marketing + CSKH</td></tr>
+        <tr><td><b>Bảng kê ảnh ↔ consent ↔ hạn consent</b></td><td>Màn 5 — rào R5</td><td>CSKH + Pháp chế</td></tr>
+        <tr><td><b>Chính sách bảo hành</b> bản chi tiết</td><td>Màn 7 — chỗ khách hỏi &ldquo;giá gồm những gì&rdquo;</td><td>Pháp chế</td></tr>
+      </tbody>
+    </table>
   </div>
-  <div class="note warn" style="margin-top:16px">
+  <div class="note warn" style="margin-top:14px">
     <b>Việc gấp nhất, ngoài file:</b> rà lại landing và mẫu quảng cáo đang chạy, gỡ năm tên bác sĩ
     đã không còn trên web — <code>Jolie Huynh</code> · <code>Le Thi Thuy</code> · <code>Hong Vu</code>
-    (ba trang hồ sơ trả 404) · <code>Park Phi</code> · <code>Kim</code>. Đây là rào R4, không chờ được.
+    (ba trang hồ sơ trả 404) · <code>Park Phi</code> · <code>Kim</code>. Rào R4, không chờ được.
+  </div>
+</section>
+
+<!-- ============ ĐỌC SÂU ============ -->
+<section id="doc-sau">
+  <div class="sec-h">
+    <span class="pre">Khi cần hiểu vì sao</span>
+    <h2>Đọc sâu hơn</h2>
+    <span class="bar"></span>
+    <p>Trang này chỉ lo phần <b>cài và dùng</b>. Luật đầy đủ nằm trong chính bộ não bạn vừa dán —
+      agent áp dụng mà bạn không cần thuộc. Khi cần tra hoặc tranh luận về một luật, đọc ở đây:</p>
+  </div>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Cần gì</th><th>Đọc ở đâu</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td><b>Bản đặc tả gốc</b> — quy trình 3 tầng · 9 màn · công thức CTA 4 câu hỏi · scorecard · điều cấm</td><td><a href="https://claude.ai/artifact/SJqCtgkuSakBrbj2jQ9WD3" target="_blank" rel="noopener"><b>KLA — Custom Instructions ↗</b></a></td></tr>
+        <tr><td>Hành vi khách: 6 nhóm · 3 rào cản SỢ–NGỜ–NGẠI · 5 mức nhận thức</td><td><code>knowledge/KF-12-hanh-vi-khach-hang.md</code></td></tr>
+        <tr><td>Nỗi sợ &amp; phản đối theo từng BL, kèm câu trả lời đã rà từ cấm</td><td><code>knowledge/KF-13-noi-so-phan-doi.md</code></td></tr>
+        <tr><td>Bảng rào R0–R12, bảng từ cấm, checklist pháp lý đầy đủ</td><td><code>knowledge/KF-11-cong-phap-ly.md</code></td></tr>
+        <tr><td>Token màu, khung trang, form, ô ảnh tạm, chuẩn giao HTML</td><td><code>knowledge/KF-09-design-system.md</code></td></tr>
+        <tr><td>Output mẫu đầy đủ A→K của một lệnh <code>/landing</code></td><td><code>doc/03-output-mau.md</code></td></tr>
+        <tr><td>Chưa từng dùng agent nào</td><td><code>doc/04-prompt-nguoi-moi.md</code></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
