@@ -205,6 +205,35 @@ footer b{color:var(--ink-2)}
   bottom:calc(20px + env(safe-area-inset-bottom,0px));
   background:var(--band);color:var(--band-ink);font:700 13.5px var(--f);padding:10px 18px;
   border-radius:999px;z-index:90;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+/* ---------- thẻ prompt ---------- */
+.qa-bar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:0 0 16px}
+.qa-bar button{font:600 13px var(--f);padding:6px 13px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-3);border-radius:999px;cursor:pointer;white-space:nowrap}
+.qa-bar button:hover{color:var(--primary-ink);border-color:var(--primary)}
+.qa-bar button[aria-pressed="true"]{background:var(--primary);color:var(--on-primary);
+  border-color:var(--primary)}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  margin:0 0 12px;overflow:hidden;box-shadow:var(--sh)}
+.prompt[hidden]{display:none}
+.prompt-h{display:flex;gap:11px;align-items:center;padding:12px 15px;flex-wrap:wrap;
+  background:var(--surface-2);border-bottom:1px solid var(--line-2)}
+.prompt-h .n{flex:none;font:700 12.5px var(--mono);color:var(--primary-ink);
+  font-variant-numeric:tabular-nums}
+.prompt-h .t{font-size:14.8px;font-weight:700;flex:1;min-width:0;color:var(--ink)}
+.prompt-h .k{flex:none;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.prompt-b{margin:0;padding:14px 15px;max-height:230px;overflow:auto;
+  font:400 12.6px/1.66 var(--mono);color:var(--ink-2);white-space:pre-wrap;
+  overflow-wrap:anywhere;background:var(--surface)}
+.prompt-f{display:flex;gap:10px;align-items:center;justify-content:space-between;
+  padding:11px 15px;flex-wrap:wrap;border-top:1px solid var(--line-2);background:var(--surface-2)}
+.prompt-f .get{font-size:12.8px;color:var(--ink-3);flex:1;min-width:150px}
+.copy{font:700 13px var(--f);padding:7px 14px;border-radius:7px;cursor:pointer;
+  border:1px solid var(--primary);background:transparent;color:var(--primary);white-space:nowrap}
+.copy:hover{background:var(--primary-wash)}
+.copy.done{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+@media (max-width:420px){.prompt-h .k{display:none}}
 </style>
 
 <header class="top">
@@ -237,6 +266,7 @@ footer b{color:var(--ink-2)}
     <a href="#cai-dat">Cài đặt</a>
     <a href="#tri-thuc">Tri thức</a>
     <a href="#lenh">Lệnh</a>
+    <a href="#prompt">Mẫu prompt</a>
     <a href="#quy-trinh">Quy trình</a>
     <a href="#hanh-vi">Luật hành vi</a>
     <a href="#phap-ly">Cổng pháp lý</a>
@@ -402,6 +432,32 @@ footer b{color:var(--ink-2)}
       <p style="font-size:14px;margin-bottom:6px"><b>Bắt máy nhưng không booking</b> → gỡ sai rào cản</p>
       <p style="font-size:14px;margin-bottom:0"><b>Booking nhiều, show-up thấp</b> → trang hứa khác thứ khách nhận</p>
     </div>
+  </div>
+</section>
+
+<!-- ============ MẪU PROMPT ============ -->
+<section id="prompt">
+  <div class="sec-h">
+    <span class="pre">Dán là chạy</span>
+    <h2>@@PROMPT_N@@ mẫu prompt</h2>
+    <span class="bar"></span>
+    <p>Lấy nguyên văn từ <code>prompts/</code> trong repo. Phần trong <code>[ngoặc vuông]</code> là chỗ bạn điền —
+      điền trước thì agent không phải hỏi lại. <b>Chép ad copy / keyword đúng từng chữ</b>, kể cả lỗi chính tả của mẫu quảng cáo:
+      đó là thứ khoá message-match.</p>
+  </div>
+
+  <div class="qa-bar" role="group" aria-label="Lọc prompt">
+    <button data-f="all" aria-pressed="true">Tất cả · @@PROMPT_N@@</button>
+    <button data-f="landing" aria-pressed="false">Dựng landing · @@N_LANDING@@</button>
+    <button data-f="audit" aria-pressed="false">Audit · @@N_AUDIT@@</button>
+    <button data-f="variant" aria-pressed="false">Chuyển kênh · @@N_VARIANT@@</button>
+  </div>
+
+@@PROMPT_CARDS@@
+
+  <div class="note warn" style="margin-top:16px">
+    <b>Prompt tốt nhất là prompt có triệu chứng.</b> Thay vì &ldquo;audit giúp tôi trang này&rdquo;,
+    viết &ldquo;CVR ổn 4% nhưng tỉ lệ kết nối chỉ 40%&rdquo; — agent sẽ soi đúng đoạn đang rò thay vì chấm dàn đều.
   </div>
 </section>
 
@@ -726,6 +782,43 @@ footer b{color:var(--ink-2)}
       }
     });
   });
+
+
+  /* ---- lọc prompt ---- */
+  var fbtns=[].slice.call(document.querySelectorAll('.qa-bar button'));
+  fbtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.dataset.f;
+      fbtns.forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); });
+      [].forEach.call(document.querySelectorAll('.prompt'),function(c){
+        c.hidden = (f!=='all' && c.dataset.g!==f);
+      });
+    });
+  });
+
+  /* ---- copy nút nhỏ của thẻ prompt ---- */
+  [].forEach.call(document.querySelectorAll('.copy[data-copy]'),function(btn){
+    btn.addEventListener('click',function(){
+      var txt=DATA[btn.dataset.copy]||'';
+      if(!txt){ toast('Không có nội dung để copy'); return; }
+      var done=function(){
+        var old=btn.textContent;
+        btn.textContent='✓ Đã copy'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent=old; btn.classList.remove('done'); },2200);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done).catch(function(){ manual(txt,done); });
+      } else { manual(txt,done); }
+    });
+  });
+  function manual(txt,done){
+    var ta=document.createElement('textarea');
+    ta.value=txt; ta.style.position='fixed'; ta.style.left='-9999px';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }
+    catch(e){ toast('Trình duyệt chặn copy — bôi đen nội dung rồi copy tay'); }
+    ta.remove();
+  }
 
   /* ---- checklist: tiện ích của riêng người xem ---- */
   var KEY='kla-checklist-v1', saved={};
