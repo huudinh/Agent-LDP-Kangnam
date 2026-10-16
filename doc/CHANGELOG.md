@@ -2,6 +2,22 @@
 
 ---
 
+## v1.2.4 — 2026-10-16 · trang hướng dẫn: tải ZIP + copy từng file
+
+Phản hồi: *"hơi khó cài đặt và chưa có download code"*. Làm theo khuôn của [`Agent-CRM-Automation`](../Agent-CRM-Automation/).
+
+**① Nút tải ZIP** — `github.com/huudinh/Agent-LDP-Kangnam/archive/refs/heads/main.zip`, kèm nhắc *giải nén bằng Extract All, đừng kéo file trực tiếp từ cửa sổ ZIP* (lỗi hay gặp nhất) và đường dẫn thư mục cần dùng sau khi giải nén.
+
+**② Ba bước ngay đầu trang** — lấy bộ file → tạo project + dán bộ não → upload 8 file. Trước đây người đọc phải tự ghép từ ba tab mới hiểu trình tự.
+
+**③ Thẻ copy từng file** thay cho bảng liệt kê: 9 thẻ (8 file `knowledge/` + `lp-skeleton.html`), mỗi thẻ có tên file · dung lượng · **nút Copy riêng** · *Xem nội dung*. Đây là đường thoát khi không tải được ZIP: copy → dán vào file `.md` trên máy → upload.
+
+Trang giờ có **54 nút Copy** (3 thẻ bộ não/tri thức gộp + 9 file + 42 prompt). Dung lượng 370 KB, còn rất xa giới hạn 16 MB.
+
+> ⚠️ **ZIP chỉ khớp khi repo đã được push.** Nhánh `main` trên GitHub hiện đang ở commit `e235bb2`, local còn **3 commit chưa push** (đổi tên · kho ảnh nội bộ · rút trang về 3 mục). Chạy `git push` thì nút Tải ZIP mới cho đúng bản mới nhất.
+
+---
+
 ## v1.2.3 — 2026-10-16 · trang hướng dẫn rút về 3 mục
 
 Trang đang gánh quá nhiều thứ mà agent đã biết sẵn. Rút về đúng ba việc người dùng cần:

@@ -121,6 +121,34 @@ def build_prompts(payload):
     return "\n".join(cards), n, counts
 
 
+def build_files(payload):
+    """Mỗi file tri thức một thẻ: copy riêng + xem nội dung. Dùng khi không tải được ZIP."""
+    cards = []
+    items = [(n + ".md", t, d, st, "knowledge/" + n + ".md") for n, t, d, st in KF_ORDER]
+    items.append(("lp-skeleton.html", "Khung HTML landing",
+                  "Khung 9 màn, form + bottom sheet, sticky bar — để /prototype dựng đúng ngay lần đầu",
+                  False, "template/lp-skeleton.html"))
+    for i, (fname, title, desc, star, rel) in enumerate(items, 1):
+        body = io.open(os.path.join(REPO, rel), encoding="utf-8").read()
+        fid = "f%d" % i
+        payload[fid] = body
+        cards.append(
+            '<article class="fcard%s">'
+            '<div class="fcard-h"><span class="fname">%s</span>%s'
+            '<span class="fsize">%s ký tự</span>'
+            '<button class="copy" data-copy="%s">Copy</button></div>'
+            '<p class="fhow"><b>%s</b> — %s</p>'
+            '<details class="fview"><summary>Xem nội dung</summary>'
+            '<pre class="filebody">%s</pre></details>'
+            "</article>"
+            % (" hi" if star else "", esc(fname),
+               '<span class="fbadge up">★ lõi</span>' if star else "",
+               fmt(len(body)), fid, esc(title), desc, esc(body[:3000]) +
+               ("\n\n… (còn %s ký tự — bấm Copy để lấy đủ)" % fmt(len(body) - 3000) if len(body) > 3000 else ""))
+        )
+    return "\n".join(cards)
+
+
 brain = copyblock("SYSTEM-PROMPT.md")
 short = copyblock("SYSTEM-PROMPT-NGAN.md")
 
@@ -134,6 +162,7 @@ merged = ("# TRI THỨC GỘP — AGENT-LDP-KANGNAM\n"
 
 payload = {"a": brain, "b": short, "c": merged}
 prompt_cards, prompt_n, prompt_counts = build_prompts(payload)
+file_cards = build_files(payload)
 blob = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
 
 rows = []
@@ -154,6 +183,7 @@ html = (html
         .replace("@@LEN_B@@", fmt(len(short)))
         .replace("@@LEN_C@@", fmt(len(merged)))
         .replace("@@KB_C@@", str(round(len(merged.encode("utf-8")) / 1024)))
+        .replace("@@FILE_CARDS@@", file_cards)
         .replace("@@PROMPT_CARDS@@", prompt_cards)
         .replace("@@PROMPT_N@@", str(prompt_n))
         .replace("@@N_WIZARD@@", str(prompt_counts["wizard"]))

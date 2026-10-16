@@ -203,6 +203,45 @@ footer b{color:var(--ink-2)}
 .copy:hover{background:var(--primary-wash)}
 .copy.done{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
 @media (max-width:420px){.prompt-h .k{display:none}}
+
+/* ---------- tải bộ file ---------- */
+.dl{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold-soft);
+  border-radius:var(--r-lg);padding:22px 20px;text-align:center;box-shadow:var(--sh);margin:0 0 16px}
+.dl h3{font-size:17px;font-weight:800;color:var(--primary-ink);margin:0 0 4px}
+.dl p{margin:0;font-size:14px;color:var(--ink-2)}
+a.dl-btn{display:inline-flex;align-items:center;gap:9px;margin:14px 0 0;background:var(--primary);
+  color:var(--on-primary);font:800 16.5px var(--f);text-decoration:none;padding:14px 26px;
+  border-radius:9px;box-shadow:0 2px 0 var(--gold-soft)}
+a.dl-btn:hover{background:var(--primary-ink)}
+.steps3{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:var(--r-lg);overflow:hidden;margin:0 0 18px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:700px){.steps3{grid-template-columns:1fr}}
+.steps3 div{background:var(--surface);padding:15px 16px}
+.steps3 b{display:block;font-size:13px;font-weight:800;color:var(--primary-ink);margin-bottom:3px}
+.steps3 span{font-size:13.5px;color:var(--ink-2)}
+.steps3 .n{display:inline-grid;place-content:center;width:21px;height:21px;border-radius:50%;
+  background:var(--band);color:#fff;font:800 11.5px var(--f);margin-right:7px;vertical-align:1px}
+.fcard{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);
+  margin:0 0 9px;box-shadow:var(--sh)}
+.fcard.hi{border:2px solid var(--gold-soft)}
+.fcard-h{display:flex;gap:10px;align-items:center;padding:11px 13px;flex-wrap:wrap}
+.fname{font:700 13.4px var(--mono);color:var(--ink);overflow-wrap:anywhere}
+.fbadge{font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  padding:3px 8px;border-radius:999px;background:var(--gold-wash);color:var(--gold);
+  border:1px solid var(--gold-soft)}
+.fsize{font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-left:auto}
+.fhow{margin:0;padding:0 13px 11px;font-size:13.8px;color:var(--ink-2)}
+.fhow b{color:var(--ink)}
+details.fview{border-top:1px solid var(--line-2)}
+details.fview summary{cursor:pointer;padding:9px 13px;font-size:13px;font-weight:600;
+  color:var(--primary);list-style:none}
+details.fview summary::-webkit-details-marker{display:none}
+details.fview summary::before{content:"▸ ";color:var(--ink-3)}
+details.fview[open] summary::before{content:"▾ "}
+.filebody{margin:0;padding:13px;background:var(--surface-2);border-top:1px solid var(--line-2);
+  font:400 12px/1.7 var(--mono);color:var(--ink-2);white-space:pre-wrap;overflow-wrap:anywhere;
+  max-height:320px;overflow:auto}
+@media(max-width:520px){.fsize{margin-left:0}}
 </style>
 
 <header class="top">
@@ -238,8 +277,22 @@ footer b{color:var(--ink-2)}
     <span class="pre">Mục 1</span>
     <h2>Cài đặt theo nền tảng</h2>
     <span class="bar"></span>
-    <p>Agent là <b>prompt + tri thức</b>, không phải phần mềm. Cài = tạo project trên nền tảng AI,
-      dán bộ não vào ô instructions, nạp 8 file tri thức.</p>
+    <p>Agent là <b>prompt + tri thức</b>, không phải phần mềm. Không cài gì lên máy.</p>
+  </div>
+
+  <div class="steps3">
+    <div><b><span class="n">1</span>Lấy bộ file</b><span>Tải ZIP rồi giải nén. Không tải được thì copy từng file ở dưới.</span></div>
+    <div><b><span class="n">2</span>Tạo project + dán bộ não</b><span>Thẻ A cho Claude/Gemini, Thẻ B cho ChatGPT.</span></div>
+    <div><b><span class="n">3</span>Upload 8 file tri thức</b><span>Thiếu file nào thì agent đoán chỗ đó — và không báo lỗi.</span></div>
+  </div>
+
+  <div class="dl">
+    <h3>Tải bộ file</h3>
+    <p>Toàn bộ repo: bộ não · 8 file tri thức · khung HTML · prompt mẫu · tài liệu.</p>
+    <a class="dl-btn" href="https://github.com/huudinh/Agent-LDP-Kangnam/archive/refs/heads/main.zip">⬇ Tải ZIP</a>
+    <p style="margin-top:12px;font-size:13px;color:var(--ink-3)">Giải nén bằng <b>Extract All</b> — đừng kéo file trực tiếp từ cửa sổ ZIP.
+      Thư mục cần dùng nằm ở <code>Agent-LDP-Kangnam-main/knowledge/</code>.<br>
+      Xem repo: <a href="https://github.com/huudinh/Agent-LDP-Kangnam" target="_blank" rel="noopener">github.com/huudinh/Agent-LDP-Kangnam</a></p>
   </div>
 
   <div class="tabs" role="tablist">
@@ -316,17 +369,11 @@ footer b{color:var(--ink-2)}
     </div>
   </div>
 
-  <h3 style="font-size:16px;font-weight:800;color:var(--primary-ink);margin:28px 0 10px">Tám file tri thức cần upload</h3>
-  <p class="dim" style="margin:0 0 12px">Thứ tự trong bảng là thứ tự agent đọc: pháp lý → hành vi → thương hiệu → thiết kế.
-    Không nạp đủ tám file thì agent chạy bằng một nửa luật — và nó không báo lỗi.</p>
-  <div class="tw">
-    <table>
-      <thead><tr><th>File</th><th>Dùng để</th><th class="num">Ký tự</th></tr></thead>
-      <tbody>
-@@KF_ROWS@@
-      </tbody>
-    </table>
-  </div>
+  <h3 style="font-size:16px;font-weight:800;color:var(--primary-ink);margin:28px 0 8px">Chín file cần nạp</h3>
+  <p class="dim" style="margin:0 0 13px">Có ZIP rồi thì upload thẳng từ thư mục <code>knowledge/</code>.
+    <b>Không tải được ZIP</b> thì bấm Copy từng file, dán vào một file <code>.md</code> trên máy rồi upload.
+    Thứ tự dưới đây là thứ tự agent đọc: pháp lý → hành vi → thương hiệu → thiết kế.</p>
+@@FILE_CARDS@@
 
   <div class="note ok" style="margin-top:10px">
     <b>Kiểm nhanh agent đã cài đúng chưa.</b> Gõ: <i>&ldquo;Dựng landing nâng ngực cho cơ sở Đà Nẵng.&rdquo;</i>
