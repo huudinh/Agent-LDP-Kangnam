@@ -10,6 +10,14 @@ Không tối ưu cho lượt xem, time-on-page, hay độ "đẹp". Một trang 
 
 > **Bắt đầu nhanh:** chưa từng dùng agent nào → [`doc/04-prompt-nguoi-moi.md`](doc/04-prompt-nguoi-moi.md). Muốn cài ngay → [`doc/01-cai-dat.md`](doc/01-cai-dat.md).
 
+## 📘 Hướng dẫn cài đặt
+
+**<https://claude.ai/artifact/JvyWoqxudQFfN5szP2x5ZQ>**
+
+Trang hướng dẫn cài trong ~15 phút: **ba thẻ Copy sẵn** (bộ não · bản ngắn · tri thức gộp), các bước cho **Claude · ChatGPT · Gemini**, bảng **8 file tri thức** và **7 lệnh**, quy trình 3 tầng + 9 màn, cổng pháp lý kèm **checklist trước khi publish**, và 5 nguồn dữ liệu live.
+
+> Nội dung trong trang lấy thẳng từ repo này nên luôn khớp bản mới nhất. Dựng lại sau khi sửa knowledge: chạy generator trong scratchpad rồi republish cùng URL.
+
 ---
 
 ## 1. Vì sao agent này tồn tại
