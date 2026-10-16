@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><!-- BỎ dòng này khi publish thật -->
+<title>[TÊN DỊCH VỤ] – Bệnh viện Thẩm mỹ Kangnam</title>
+<!--
+  ============================================================================
+  LP SKELETON — Kangnam Landing Agent (KLA) v1.0
+  Design System: knowledge/KF-09-design-system.md (token production v3.0)
+  Khung 9 màn: SYSTEM-PROMPT.md §6 · khối: knowledge/KF-15-block-library.md
+
+  CÁCH DÙNG
+  1. Thay mọi [NGOẶC VUÔNG] bằng nội dung thật từ output /landing.
+  2. Giữ nguyên: token màu · khung .app · header · footer · form · sticky bar.
+  3. XOÁ các màn không dùng theo nhiệt độ của tệp (Nóng/CDP chỉ giữ 1→4/5→7→9).
+  4. Ảnh chưa có → GIỮ figure.ph và ghi rõ cần ảnh gì. KHÔNG dùng ảnh stock/AI.
+  5. Trước khi giao: chạy checklist KF-11 mục 6 + điền BẢNG KÊ ẢNH ở cuối file.
+
+  ⛔ CẤM: popup chặn màn đầu · đếm ngược tự reset · "chỉ còn N suất" không thật
+     · before/after cơ thể (BL giảm cân) · tên thương mại thuốc/filler/botox
+     · để [CHỜ CẬP NHẬT] lộ ra production (thiếu dữ liệu thì ẩn cả khối).
+  ============================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Lora:ital,wght@1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#074E84; --navy-900:#04365E; --navy-950:#022544;
+  --ynavy:#1F5FC4; --cyan:#00A5E0;
+  --gold:#A66E29;  --amber:#FBBF65;  --terra:#D77927;
+  --cta:#EF6103;   --cta-press:#CF5300;
+  --bg:#F3F6FA;    --surface:#FFFFFF;
+  --ink:#0E2338;   --ink-2:#4A5C70;  --ink-3:#6E7E90;
+  --line:#DCE3EC;  --ok:#1E8E5A;     --err:#C62828; --err-t:#FDECEC;
+  --g-spa:#00A5E0;  --g-spa-t:#E2F5FC;
+  --g-pttm:#1F5FC4; --g-pttm-t:#E8EFFB;
+  --g-nk:#A66E29;   --g-nk-t:#FCF1DF;
+  --g-oth:#6E7E90;  --g-oth-t:#EEF1F5;
+  --r-sm:8px; --r:14px; --r-lg:20px;
+  --sh:0 2px 10px rgba(7,78,132,.08);
+  --sh-lg:0 10px 30px rgba(2,37,68,.16);
+  --hdr-h:56px;
+  --f:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --f2:'Lora',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:400 15px/1.55 var(--f);color:var(--ink);background:#D9E0E8}
+img{max-width:100%}
+h1,h2,h3{line-height:1.2;margin:0 0 10px}
+p{margin:0 0 10px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+
+/* ---------- khung trang ---------- */
+.app{max-width:480px;margin:0 auto;background:var(--bg);min-height:100vh;
+  box-shadow:0 0 0 1px rgba(0,0,0,.04),0 20px 60px rgba(0,0,0,.12);
+  padding-bottom:calc(76px + env(safe-area-inset-bottom,0px));
+  position:relative;overflow-x:clip}
+.wrap{padding-inline:16px}
+section{position:relative;padding:44px 0 36px;scroll-margin-top:var(--hdr-h)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:60;display:flex;align-items:center;
+  justify-content:space-between;gap:10px;min-height:var(--hdr-h);padding:9px 14px;
+  padding-top:calc(9px + env(safe-area-inset-top,0px));
+  background:rgba(243,246,250,.86);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(220,227,236,.75)}
+.hdr__logo img{max-height:34px;width:auto;display:block}
+.hdr__cta{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;
+  background:var(--cta);color:#fff;font-weight:800;font-size:12.5px;
+  padding:10px 15px;border-radius:999px;border:0;white-space:nowrap;cursor:pointer;
+  box-shadow:0 4px 12px rgba(239,97,3,.3)}
+
+/* ---------- tiêu đề section ---------- */
+.sec-head{text-align:center;margin-bottom:20px}
+.sec-head .pre{display:block;font:italic 600 18px/1.3 var(--f2);color:var(--gold)}
+.sec-head .main{display:block;font-size:26px;font-weight:800;color:var(--navy);
+  letter-spacing:-.2px;margin-top:2px}
+.sec-head .bar{display:block;width:48px;height:3px;border-radius:3px;
+  background:var(--amber);margin:12px auto 0}
+
+/* ---------- nút ---------- */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;
+  width:100%;border:0;border-radius:999px;padding:12px 22px;font-weight:800;
+  font-family:var(--f);letter-spacing:.3px;text-decoration:none;cursor:pointer;
+  transition:transform .12s,background-color .15s}
+.btn-cta{background:var(--cta);color:#fff;font-size:19px;text-transform:uppercase;
+  box-shadow:0 6px 18px rgba(239,97,3,.38)}
+.btn-cta:hover{background:var(--cta-press)}
+.btn-cta:active{transform:scale(.98);background:var(--cta-press)}
+.btn-outline{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy);
+  font-size:15px;min-height:46px;font-weight:700}
+/* dòng giảm rủi ro dưới MỌI nút chính — không được bỏ */
+.reassure{margin:8px 0 0;font-size:12.5px;color:var(--ink-2);text-align:center}
+
+/* ---------- card ---------- */
+.card{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--sh);
+  padding:16px;margin-bottom:12px}
+.gcard{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--sh);
+  overflow:hidden;border-top:4px solid var(--gc,var(--g-pttm))}
+.badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:#fff;
+  border:1px solid var(--line);border-radius:999px;padding:7px 12px;
+  font-size:12.5px;font-weight:600;color:var(--navy)}
+
+/* ---------- ô ảnh tạm ---------- */
+.ph{display:grid;place-content:center;gap:6px;text-align:center;margin:0;padding:16px;
+  aspect-ratio:var(--ar,16/9);background:#E8EFFB;border:2px dashed var(--line);
+  border-radius:var(--r);color:var(--ink-2);font-size:14px;line-height:1.45}
+.ph b{display:block;font-weight:700;color:var(--navy)}
+
+/* ---------- FAQ ---------- */
+details.faq{background:#fff;border-radius:var(--r);box-shadow:var(--sh);
+  padding:14px 16px;margin-bottom:10px}
+details.faq summary{font-weight:700;color:var(--navy);cursor:pointer;list-style:none}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq p{margin:10px 0 0;color:var(--ink-2)}
+
+/* ---------- form ---------- */
+.reg{background:#1B4182;color:#fff}
+.reg .sec-head .main{color:#fff}
+.reg .sec-head .pre{color:var(--amber)}
+.form-card{background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:18px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.input,.select-btn{width:100%;min-height:50px;border:1.5px solid var(--line);
+  border-radius:12px;padding:12px 14px;font:500 16px var(--f);color:var(--ink);
+  background:#fff;text-align:left}
+.input:focus,.select-btn:focus{outline:0;border-color:var(--ynavy);
+  box-shadow:0 0 0 3px rgba(31,95,196,.18)}
+.field.bad .input,.field.bad .select-btn{border-color:var(--err);background:var(--err-t)}
+.err{display:none;margin:6px 0 0;font-size:13px;font-weight:600;color:var(--err)}
+.field.bad .err{display:block}
+.consent{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--ink-2);
+  margin:4px 0 14px}
+.consent input{margin-top:3px;width:18px;height:18px;flex-shrink:0}
+.privacy{margin:10px 0 0;font-size:12px;color:var(--ink-3);text-align:center}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ---------- bottom sheet chọn dịch vụ (micro-conversion) ---------- */
+.sheet{position:fixed;inset:0;z-index:90;display:none}
+.sheet[open]{display:block}
+.sheet__bd{position:absolute;inset:0;background:rgba(2,37,68,.45)}
+.sheet__pn{position:absolute;left:50%;transform:translateX(-50%);bottom:0;
+  width:100%;max-width:480px;background:#fff;border-radius:20px 20px 0 0;
+  padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));max-height:76vh;overflow:auto}
+.sheet__ttl{font-size:17px;font-weight:800;color:var(--navy);margin:0 0 12px}
+.opt{display:flex;align-items:center;gap:10px;width:100%;border:0;background:#fff;
+  border-bottom:1px solid var(--line);padding:14px 4px;font:500 16px var(--f);
+  color:var(--ink);text-align:left;cursor:pointer}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:var(--g-oth)}
+.dot[data-g="spa"]{background:var(--g-spa)} .dot[data-g="pttm"]{background:var(--g-pttm)}
+.dot[data-g="nk"]{background:var(--g-nk)}
+
+/* ---------- sticky bar: Gọi | Zalo | Đặt lịch ---------- */
+.sticky-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:70;
+  width:100%;max-width:480px;display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:8px;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
+  background:rgba(255,255,255,.96);border-top:1px solid var(--line);
+  backdrop-filter:blur(8px)}
+.sticky-bar a,.sticky-bar button{display:flex;align-items:center;justify-content:center;
+  gap:6px;min-height:46px;border-radius:999px;border:0;font:700 14px var(--f);
+  text-decoration:none;cursor:pointer}
+.sb-call{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+.sb-zalo{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+.sb-book{background:var(--cta);color:#fff;font-weight:800}
+
+/* ---------- footer ---------- */
+.foot{background:#f1f1ef;color:#254770;padding:26px 14px 30px;text-align:center}
+.ft__license{font-size:12.5px;font-style:italic;line-height:1.55;margin-top:8px}
+.ft__hot{display:flex;align-items:center;justify-content:center;gap:12px;max-width:270px;
+  margin:18px auto 0;padding:10px 22px;border-radius:55px;
+  background:linear-gradient(90deg,#fec465 0%,#c28710 100%);color:#fff;
+  font-weight:700;text-decoration:none}
+.ft__hot-num{display:block;font-size:24px;font-weight:800}
+.ft__branches-title{font-size:14px;font-weight:700;margin:18px 0 5px}
+.ft__branches-list{font-size:13px;line-height:1.85}
+
+/* ---------- màn cảm ơn ---------- */
+.view{position:fixed;inset:0;z-index:100;display:none;background:var(--bg);
+  overflow:auto;padding:28px 18px}
+.view[open]{display:block}
+.view .inner{max-width:420px;margin:40px auto 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="hdr">
+    <div class="hdr__logo">
+      <a href="/" aria-label="Bệnh viện Thẩm mỹ Kangnam">
+        <img src="[LOGO-HEADER.png]" alt="Bệnh viện Thẩm mỹ Kangnam" width="275" height="34">
+      </a>
+    </div>
+    <button class="hdr__cta" type="button" data-goform>ĐẶT LỊCH NGAY</button>
+  </header>
+
+  <main>
+
+  <!-- ====== MÀN 1 · HERO — "Có đúng thứ mình tìm không?" (B-H1/H2/H3) ======
+       LUẬT: nhắc lại NGUYÊN VĂN lời hứa/từ khoá của ad · hiểu được trong 3 giây
+       · 2–3 badge trust · CTA chính thấy ngay không cần cuộn.
+       ⛔ Không xin SĐT ở hero cho ca đại phẫu — CTA hero là cuộn xuống hoặc gọi. -->
+  <section class="hero wrap" id="hero">
+    <figure class="ph" style="--ar:4/5">
+      <b>Ảnh hero 4:5 (mobile)</b>
+      [NỘI DUNG ẢNH CẦN · phục vụ chân dung nào · điều kiện pháp lý nếu là case thật]
+      <!-- khi có ảnh thật: <img src="…" fetchpriority="high" width="" height="" alt=""> -->
+    </figure>
+    <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-top:16px">
+      [HEADLINE — khớp message-match với ad/keyword]
+    </h1>
+    <p style="color:var(--ink-2)">[SUB 1 dòng — lợi ích cụ thể, không tính từ rỗng]</p>
+    <a class="btn btn-cta" href="#dang-ky" data-ev="cta_hero">[ĐỘNG TỪ + LỢI ÍCH]</a>
+    <p class="reassure">Miễn phí · Không ràng buộc · Thông tin được bảo mật</p>
+    <div class="badges">
+      <span class="badge">[Giấy phép Bộ Y tế 287/BYT-GPHĐ]</span>
+      <span class="badge">[Bác sĩ chuyên khoa – KCCS]</span>
+      <span class="badge">[Con số thật — có nguồn KF-14]*</span>
+    </div>
+    <!-- ⚠️ LANDING LOCAL CÓ KHÁCH TỈNH: thêm đúng tại đây, không để xuống dưới
+    <p style="font-size:13px;color:var(--ink-2);margin-top:12px">
+      Tư vấn &amp; đặt khám tại [VIỆN TỈNH] · phẫu thuật thực hiện tại [TUYẾN BỆNH VIỆN]
+    </p> -->
+  </section>
+
+  <!-- ====== MÀN 2 · VẤN ĐỀ — "Họ có hiểu mình không?" (B-P1/B-P2) ======
+       Viết bằng NGÔN NGỮ CỦA KHÁCH. ⛔ Không liệt kê kỹ thuật. ⛔ Không khoét sâu. -->
+  <section class="problem wrap" id="van-de">
+    <h2 class="sec-head">
+      <span class="pre">[Dòng pre Lora italic]</span>
+      <span class="main">[TIÊU ĐỀ GỌI TÊN NỖI ĐAU]</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <div class="card">[Tình trạng 1 — lời khách]</div>
+    <div class="card">[Tình trạng 2 — lời khách]</div>
+    <div class="card">[Tình trạng 3 — lời khách]</div>
+  </section>
+
+  <!-- ====== MÀN 3 · GIẢI PHÁP — "Khác gì nơi khác?" (B-S1/B-S2) ======
+       >4 thẻ cùng loại → chuyển tabs/carousel. Tên kỹ thuật đúng DMKT (R2/R7).
+       ⛔ Không tên thương mại thuốc/filler/botox. -->
+  <section class="solution wrap" id="giai-phap">
+    <h2 class="sec-head">
+      <span class="pre">[pre]</span><span class="main">[PHƯƠNG PHÁP / CÔNG NGHỆ]</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <div class="gcard" style="--gc:var(--g-pttm)">
+      <div style="padding:16px">
+        <h3 style="color:var(--navy)">[Tên kỹ thuật đúng như trên site]</h3>
+        <p style="color:var(--ink-2)">[Mô tả — nói lợi ích trước, cơ chế sau]</p>
+      </div>
+    </div>
+    <a class="btn btn-outline" href="#dang-ky" data-ev="cta_micro">[MICRO-CTA — vd: Nhận tư vấn dáng phù hợp]</a>
+  </section>
+
+  <!-- ====== MÀN 4 · NGƯỜI LÀM — "Ai làm cho mình?" (B-D1) ======
+       R4: chỉ bác sĩ có trong KF-01 VÀ đúng chuyên khoa của dịch vụ trang này.
+       ⛔ Bác sĩ chưa đủ hồ sơ → XOÁ CẢ KHỐI, không hiển thị kèm ghi chú cảnh báo. -->
+  <section class="doctor wrap" id="bac-si">
+    <h2 class="sec-head">
+      <span class="pre">[pre]</span><span class="main">BÁC SĨ TRỰC TIẾP THỰC HIỆN</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <div class="card">
+      <figure class="ph" style="--ar:3/4"><b>Ảnh bác sĩ 3:4</b>[Tên bác sĩ · ảnh thật của hệ thống]</figure>
+      <h3 style="margin-top:12px;color:var(--navy)">[Chức danh + Tên — từ KF-01]</h3>
+      <p style="color:var(--ink-2)">[Chuyên môn · kinh nghiệm — có nguồn KF-14]*</p>
+      <p style="font-style:italic;color:var(--ink-2)">"[Một câu triết lý thẩm mỹ của bác sĩ]"</p>
+    </div>
+  </section>
+
+  <!-- ====== MÀN 5 · BẰNG CHỨNG — "Người giống mình ra sao?" (B-E1/E2/E3) ======
+       Case ĐÚNG PHÂN KHÚC của khách, không phải case đẹp nhất.
+       R5: phải có văn bản đồng ý. ⛔ BL giảm cân: KHÔNG before/after cơ thể (R12). -->
+  <section class="evidence wrap" id="bang-chung">
+    <h2 class="sec-head">
+      <span class="pre">[pre]</span><span class="main">KHÁCH HÀNG THỰC TẾ</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <figure class="ph" style="--ar:1/1"><b>Trước 1:1</b>[Case · chân dung phục vụ · cần consent + pháp chế duyệt]</figure>
+      <figure class="ph" style="--ar:1/1"><b>Sau 1:1</b>[Cùng case · cùng góc chụp]</figure>
+    </div>
+    <p style="font-size:12px;color:var(--ink-2);margin-top:10px">
+      *Hiệu quả phụ thuộc cơ địa mỗi người. Hình ảnh sử dụng với sự đồng ý của khách hàng.
+    </p>
+    <a class="btn btn-cta" href="#dang-ky" data-ev="cta_case">[ĐỘNG TỪ + LỢI ÍCH]</a>
+    <p class="reassure">Miễn phí · Không ràng buộc · Thông tin được bảo mật</p>
+  </section>
+
+  <!-- ====== MÀN 6 · QUY TRÌNH & AN TOÀN (B-Q1/Q2/Q3) ======
+       Mốc hồi phục dạng KHOẢNG + "tùy cơ địa mỗi người". ⛔ Không mốc cứng. -->
+  <section class="process wrap" id="quy-trinh">
+    <h2 class="sec-head">
+      <span class="pre">[pre]</span><span class="main">QUY TRÌNH 5 BƯỚC CHUẨN Y KHOA</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <div class="card">[Bước 1] · [Bước 2] · [Bước 3] · [Bước 4] · [Bước 5]</div>
+    <div class="card">
+      <h3 style="color:var(--navy);font-size:16px">Hồi phục &amp; tái khám</h3>
+      <p style="color:var(--ink-2)">Thường trong khoảng [X–Y] ngày, <b>tùy cơ địa mỗi người</b>.
+        Tái khám định kỳ theo lịch bác sĩ hẹn.</p>
+    </div>
+  </section>
+
+  <!-- ====== MÀN 7 · GIÁ / OFFER (B-C1/C2/C3) ======
+       Giá & ưu đãi là DỮ LIỆU ĐỘNG — lấy tại /bang-gia/ và /uu-dai/ lúc chạy.
+       Ghi rõ "tham khảo". Khối bảo hành đặt NGAY CẠNH khối giá. -->
+  <section class="price wrap" id="chi-phi">
+    <h2 class="sec-head">
+      <span class="pre">[pre]</span><span class="main">CHI PHÍ &amp; QUYỀN LỢI</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <div class="card">
+      <h3 style="color:var(--navy);font-size:16px">Chi phí tham khảo</h3>
+      <p style="color:var(--ink-2)">[GIÁ ĐỘNG — từ /bang-gia/] · <i>giá tham khảo, báo chính xác sau khi khám</i></p>
+      <p style="color:var(--ink-2)"><b>Bao gồm:</b> [xét nghiệm · ca mổ · thuốc · tái khám]</p>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--navy);font-size:16px">6 quyền lợi tại Kangnam</h3>
+      <p style="color:var(--ink-2)">Bác sĩ chuyên khoa trực tiếp khám · gói xét nghiệm tổng quát ·
+        trải nghiệm phẫu thuật · gói chăm sóc hậu phẫu · tái khám định kỳ ·
+        <b>bảo hành minh bạch</b></p>
+    </div>
+    <a class="btn btn-cta" href="#dang-ky" data-ev="cta_price">[ĐỘNG TỪ + LỢI ÍCH]</a>
+    <p class="reassure">Miễn phí · Không ràng buộc · Thông tin được bảo mật</p>
+  </section>
+
+  <!-- ====== MÀN 8 · FAQ (B-F1) — 5–7 câu từ KF-13, xếp theo THỨ TỰ KHÁCH LO ====== -->
+  <section class="faq-sec wrap" id="faq">
+    <h2 class="sec-head">
+      <span class="pre">[pre]</span><span class="main">CÂU HỎI THƯỜNG GẶP</span>
+      <span class="bar" aria-hidden="true"></span>
+    </h2>
+    <details class="faq"><summary>[Câu hỏi 1 — rào cản nặng nhất của chân dung]</summary>
+      <p>[Câu trả lời từ KF-13 — đã rà bảng từ cấm]</p></details>
+    <details class="faq"><summary>[Câu hỏi 2 — về giá]</summary><p>[Trả lời]</p></details>
+    <details class="faq"><summary>[Câu hỏi 3 — về hồi phục]</summary><p>[Trả lời dạng khoảng]</p></details>
+    <details class="faq"><summary>[Câu hỏi 4 — về bảo hành]</summary><p>[Trả lời]</p></details>
+    <details class="faq"><summary>[Câu hỏi 5 — phản đối chung]</summary><p>[Trả lời]</p></details>
+  </section>
+
+  <!-- ====== MÀN 9 · CHỐT — micro-conversion + form (B-M1 + B-R1) ======
+       Form ≤3 trường · checkbox dữ liệu cá nhân BẮT BUỘC · .privacy dưới nút
+       · nút Zalo SONG SONG với form (trục riêng tư) · nói rõ "bấm xong thì sao". -->
+  <section class="reg" id="dang-ky">
+    <div class="wrap">
+      <h2 class="sec-head">
+        <span class="pre">[pre]</span><span class="main">ĐẶT KHÁM CÙNG BÁC SĨ</span>
+        <span class="bar" aria-hidden="true"></span>
+      </h2>
+      <div class="form-card">
+        <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:14px">
+          <b>Sau khi bạn gửi:</b> [bộ phận nào] sẽ gọi lại trong [khung thời gian]
+          từ số [đầu số] để xác nhận lịch khám. Buổi khám miễn phí và không ràng buộc.
+        </p>
+        <form id="lead-form" novalidate>
+          <div class="field" id="f-name">
+            <label for="name">Họ và tên</label>
+            <input class="input" id="name" name="name" type="text" autocomplete="name" required>
+            <p class="err" id="e-name">Vui lòng nhập họ tên</p>
+          </div>
+          <div class="field" id="f-phone">
+            <label for="phone">Số điện thoại</label>
+            <input class="input" id="phone" name="phone" type="tel" inputmode="numeric"
+                   autocomplete="tel" pattern="[0-9+ ]{9,15}" required aria-describedby="e-phone">
+            <p class="err" id="e-phone">Số điện thoại chưa đúng</p>
+          </div>
+          <div class="field" id="f-svc">
+            <label for="svc-btn">Dịch vụ quan tâm</label>
+            <button class="select-btn" id="svc-btn" type="button" aria-haspopup="dialog">
+              <span id="svc-label" style="color:var(--ink-3)">Chọn dịch vụ…</span>
+            </button>
+            <input type="hidden" name="service" id="svc-value">
+            <p class="err" id="e-svc">Vui lòng chọn dịch vụ</p>
+          </div>
+          <div class="field">
+            <label for="slot">Khung giờ muốn được gọi lại <span style="font-weight:400;color:var(--ink-3)">(không bắt buộc)</span></label>
+            <select class="input" id="slot" name="slot">
+              <option value="">Giờ nào cũng được</option>
+              <option>Trong giờ hành chính</option>
+              <option>Sau 18h</option>
+              <option>Cuối tuần</option>
+            </select>
+          </div>
+          <!-- honeypot chống bot — giữ nguyên -->
+          <div class="hp" aria-hidden="true"><input name="email" tabindex="-1" autocomplete="off"></div>
+          <label class="consent">
+            <input type="checkbox" id="consent" required>
+            <span>Tôi đồng ý để BVTM Kangnam xử lý thông tin của tôi nhằm liên hệ tư vấn,
+              theo <a href="[LINK-CHINH-SACH]" target="_blank" rel="noopener">Chính sách bảo vệ dữ liệu cá nhân</a>.</span>
+          </label>
+          <button class="btn btn-cta" type="submit" data-ev="submit_form">[ĐỘNG TỪ + LỢI ÍCH]</button>
+          <p class="privacy">Thông tin của bạn chỉ dùng để BVTM Kangnam liên hệ xác nhận,
+            không chia sẻ cho bên thứ ba.</p>
+          <div aria-live="polite" id="form-status" style="min-height:1px"></div>
+        </form>
+        <!-- kênh riêng tư song song form — KHÔNG được bỏ (trục NGẠI, KF-12 mục 2.1) -->
+        <a class="btn btn-outline" style="margin-top:12px" href="[ZALO-DEEPLINK]"
+           data-ev="click_zalo">Hỏi riêng bác sĩ qua Zalo</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="foot">
+    <div class="ft__logo">
+      <img src="[LOGO-FOOTER.svg]" alt="Bệnh viện Thẩm mỹ Kangnam" width="192" height="114" loading="lazy">
+    </div>
+    <!-- Dòng giấy phép BẮT BUỘC, chép đúng nguyên văn, không rút gọn -->
+    <p class="ft__license"><i>Giấy phép hoạt động khám chữa bệnh số 287/BYT-GPHĐ do<br>
+      Bộ Y tế cấp ngày 03/12/2020</i></p>
+    <a href="tel:[HOTLINE]" class="ft__hot" data-ev="click_call">
+      <span class="ft__hot-txt">
+        <span class="ft__hot-label">Hotline</span>
+        <span class="ft__hot-num">[HOTLINE]</span>
+      </span>
+    </a>
+    <div class="ft__branches">
+      <div class="ft__branches-title">Hệ thống bệnh viện và Viện thẩm mỹ</div>
+      <!-- ⚠️ R3: chỉ liệt kê cơ sở ĐÚNG phạm vi dịch vụ của trang này.
+           Trang mời đại phẫu → địa chỉ phải là TUYẾN BỆNH VIỆN. -->
+      <p class="ft__branches-list">[DANH SÁCH CƠ SỞ ĐÚNG TUYẾN]</p>
+    </div>
+    <div class="ft__socials">[FB · YouTube · Instagram · TikTok · logo Bộ Công Thương]</div>
+  </footer>
+
+  <!-- ===================== STICKY BAR ===================== -->
+  <nav class="sticky-bar" aria-label="Liên hệ nhanh">
+    <a class="sb-call" href="tel:[HOTLINE]" data-ev="click_call">Gọi</a>
+    <a class="sb-zalo" href="[ZALO-DEEPLINK]" data-ev="click_zalo">Zalo</a>
+    <button class="sb-book" type="button" data-goform>Đặt lịch</button>
+  </nav>
+
+  <!-- ============ BOTTOM SHEET CHỌN DỊCH VỤ (micro-conversion) ============ -->
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-ttl">
+    <div class="sheet__bd" data-close></div>
+    <div class="sheet__pn">
+      <p class="sheet__ttl" id="sheet-ttl">Bạn đang quan tâm dịch vụ nào?</p>
+      <button class="opt" data-g="pttm" data-v="[Dịch vụ 1]"><span class="dot" data-g="pttm"></span>[Dịch vụ 1]</button>
+      <button class="opt" data-g="pttm" data-v="[Dịch vụ 2]"><span class="dot" data-g="pttm"></span>[Dịch vụ 2]</button>
+      <button class="opt" data-g="spa"  data-v="[Dịch vụ 3]"><span class="dot" data-g="spa"></span>[Dịch vụ 3]</button>
+      <button class="opt" data-g="oth"  data-v="Tư vấn thêm"><span class="dot" data-g="oth"></span>Tôi muốn được tư vấn thêm</button>
+    </div>
+  </div>
+
+  <!-- ============ MÀN CẢM ƠN — là một màn CX, không phải alert() ============ -->
+  <div class="view" id="thanks" role="dialog" aria-modal="true">
+    <div class="inner">
+      <h2 style="color:var(--navy)">Đã nhận thông tin của bạn</h2>
+      <p style="color:var(--ink-2)">[Bộ phận nào] sẽ liên hệ trong [khung thời gian]
+        từ số [đầu số] để xác nhận lịch khám.</p>
+      <figure class="ph" style="--ar:16/9"><b>Video 16:9</b>[Clip ngắn bác sĩ chào &amp; dặn chuẩn bị gì]</figure>
+      <a class="btn btn-cta" style="margin-top:16px" href="[ZALO-OA]" data-ev="follow_oa">Quan tâm Zalo OA để nhận lịch hẹn</a>
+      <div class="card" style="margin-top:16px;text-align:left">
+        <h3 style="color:var(--navy);font-size:16px">Chuẩn bị cho buổi tư vấn</h3>
+        <p style="color:var(--ink-2)">[3 gạch đầu dòng giúp khách chuẩn bị — nội dung hữu ích thật]</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* Tối thiểu, không framework. Event name khớp mục H (Tracking) của output /landing. */
+(function(){
+  var sheet=document.getElementById('sheet'),svcBtn=document.getElementById('svc-btn'),
+      svcVal=document.getElementById('svc-value'),svcLbl=document.getElementById('svc-label'),
+      form=document.getElementById('lead-form'),thanks=document.getElementById('thanks');
+
+  function track(name,extra){ /* TODO: đẩy vào dataLayer / GA4 / pixel */
+    (window.dataLayer=window.dataLayer||[]).push(Object.assign({event:name},extra||{})); }
+
+  document.querySelectorAll('[data-ev]').forEach(function(el){
+    el.addEventListener('click',function(){track(el.getAttribute('data-ev'));}); });
+
+  document.querySelectorAll('[data-goform]').forEach(function(b){
+    b.addEventListener('click',function(){
+      track('cta_header_or_sticky');
+      document.getElementById('dang-ky').scrollIntoView({behavior:'smooth'}); }); });
+
+  svcBtn.addEventListener('click',function(){sheet.setAttribute('open','');track('open_service_sheet');});
+  sheet.querySelectorAll('[data-close]').forEach(function(x){
+    x.addEventListener('click',function(){sheet.removeAttribute('open');}); });
+  sheet.querySelectorAll('.opt').forEach(function(o){
+    o.addEventListener('click',function(){
+      var v=o.getAttribute('data-v');
+      svcVal.value=v; svcLbl.textContent=v; svcLbl.style.color='var(--ink)';
+      document.getElementById('f-svc').classList.remove('bad');
+      sheet.removeAttribute('open'); track('select_service',{service:v}); }); });
+
+  function bad(id,on){document.getElementById(id).classList[on?'add':'remove']('bad');}
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    /* dùng form.elements[...] — form.name trả về thuộc tính name CỦA FORM, không phải input */
+    var el=form.elements,
+        ok=true, name=el['name'].value.trim(), phone=el['phone'].value.trim();
+    bad('f-name',!name); if(!name) ok=false;
+    var pOk=/^[0-9+ ]{9,15}$/.test(phone); bad('f-phone',!pOk); if(!pOk) ok=false;
+    bad('f-svc',!svcVal.value); if(!svcVal.value) ok=false;
+    if(!document.getElementById('consent').checked){
+      document.getElementById('form-status').textContent='Vui lòng đồng ý để chúng tôi liên hệ với bạn.'; ok=false; }
+    if(el['email'].value){return;} /* honeypot: bot điền → im lặng bỏ qua */
+    if(!ok){document.getElementById('form-status').textContent='Vui lòng kiểm tra lại thông tin.';return;}
+
+    /* TODO: POST về endpoint CRM, kèm tag kênh + dịch vụ + nhiệt độ + UTM */
+    track('submit_form',{service:svcVal.value});
+    thanks.setAttribute('open','');
+  });
+})();
+</script>
+
+<!--
+  ============================================================================
+  BẢNG KÊ ẢNH CẦN CẤP — bắt buộc điền trước khi giao (KF-09 mục 8)
+
+  | Màn | Tỉ lệ | Nội dung ảnh cần | Ai duyệt | Trạng thái |
+  |-----|-------|------------------|----------|------------|
+  | 1 Hero        | 4/5 · 16/9 |  |  |  |
+  | 4 Bác sĩ      | 3/4        |  | Chuyên môn + HR (R4) |  |
+  | 5 Case        | 1/1        |  | CSKH + Pháp chế (R5) |  |
+  | 6 Quy trình   | 16/9       |  | Pháp chế |  |
+  | Thank-you     | 16/9 video |  | Pháp chế |  |
+
+  DANH SÁCH [CHỜ CẬP NHẬT] CÒN LẠI TRONG FILE NÀY:
+  - [ ] …
+
+  ⚠️ Trang chỉ được publish khi: bảng trên đã đủ ảnh thật · mọi figure.ph đã thay
+  hoặc khối đã bị ẩn · checklist KF-11 mục 6 tick đủ · đã có GXNNDQC (R9).
+  ============================================================================
+-->
+</body>
+</html>

@@ -1,0 +1,108 @@
+# CHANGELOG — Agent-LDP-Kangnam (KLA)
+
+---
+
+## v1.1 — 2026-10-16 · nối agent với dữ liệu live
+
+Người dùng chỉ định **5 nguồn dữ liệu chính thống**. Đã lấy dữ liệu thật về, đối chiếu, sửa knowledge và thêm script chụp lại.
+
+| Nguồn | Lấy được gì |
+|---|---|
+| `/doi-ngu-bac-si/` | **16 bác sĩ** trong JSON nhúng `kn-doctors-data` + Dr. Richard Huy giới thiệu riêng — mỗi người có **CCHN · chuyên khoa · cơ sở · cờ `verified` · số năm · số ca · ảnh** |
+| menu chính | **10 nhóm dịch vụ** (ảnh người dùng gửi, khớp site) |
+| `/chi-nhanh/` | **7 cơ sở tại 7 tỉnh thành** = 2 bệnh viện + 5 viện thẩm mỹ |
+| `/case-thuc-te/` | 4 nhóm lọc · **trang đang trống** ("Chưa có ca nào trong nhóm này") |
+| `/hinh-anh-khach-hang/` | **9 nhóm** ảnh trước–sau, đã khai consent + câu miễn trừ chuẩn |
+
+### Sửa gì
+- **`KF-01` → v1.1**: thêm **§0 Nguồn dữ liệu chính thống**; thay bảng cơ sở (7, bỏ dòng "viện TM 194 Trường Chinh" không có thật); thay danh sách bác sĩ bằng **bảng 17 người kèm CCHN + `verified`**; taxonomy **tách Da Liễu / Trị Sắc Tố thành 2 nhóm** (menu thật có 10 nhóm, bản cũ gộp còn 9); sửa email liên hệ theo site.
+- **`KF-14` → v1.1**: mục 1 thành bảng nguồn + trạng thái; case và ảnh trước–sau có nguồn thật; thêm câu miễn trừ nguyên văn của site để dùng lại; thêm cảnh báo `/case-thuc-te/` đang trống.
+- **`SYSTEM-PROMPT`**: thêm **§1.1 Nguồn dữ liệu**; §9.1 đổi luật bác sĩ thành **3 cổng** (có trong danh sách live · đúng chuyên khoa + đúng cơ sở · `verified` + có CCHN); §9.7 chốt con số 7 cơ sở.
+- **`SYSTEM-PROMPT-NGAN`** → v1.1, thêm mục Nguồn dữ liệu, vẫn **7.993 ký tự** (giới hạn 8.000).
+- **Thêm `tools/fetch-du-lieu.py`** — chụp lại 5 nguồn, in ra: tổng bác sĩ · ai thiếu CCHN · ai chưa `verified` · số cơ sở · case trống hay không · số nhóm ảnh. Ghi snapshot JSON vào `out/`.
+
+### Ba phát hiện đáng chú ý
+1. **`Dr. Jolie Huynh` không còn tồn tại** — trang `/doi-ngu-bac-si/jolie-huynh/` trả **404** và tên này không có trong danh sách live, nhưng **vẫn đang nằm trong `kn-ho-so-thuong-hieu.md` của `Agent-AdsOptimize-Kangnam`**. Hai slug khác cũng 404: `bac-si-dr-hong-vu`, `le-thi-thuy`. → Đã loại khỏi `KF-01`. **Cần sửa cả ở agent nguồn.**
+2. **Site tự đánh dấu `status: verified`** cho từng bác sĩ — 10/16 verified, **6 người để trống**; và **4 người không có số CCHN** (Alex Han · Nicolas Hung · Felix Tran · Frankie Vu). Đây là tín hiệu duyệt sẵn có, agent dùng làm cổng R4.
+3. **`/case-thuc-te/` đang trống** → màn 5 của mọi landing hiện phải dùng ảnh từ `/hinh-anh-khach-hang/` hoặc placeholder. Đây là mục chặn số 1 lúc này.
+
+---
+
+## v1.0 — 2026-10-16 · bản đầu
+
+**Nguồn gốc:** spec *Kangnam Landing Agent (KLA) – Custom Instructions* (artifact `SJqCtgkuSakBrbj2jQ9WD3`), đối chiếu và nối với tri thức Kangnam đang có trong repo.
+
+### Đã dựng
+| File | Nội dung |
+|---|---|
+| `SYSTEM-PROMPT.md` | Bộ não đầy đủ §0–§14 (Claude Project / Gemini) |
+| `SYSTEM-PROMPT-NGAN.md` | Bản 7.991 ký tự cho ChatGPT Custom GPT |
+| `knowledge/KF-01-ho-so-thuong-hieu.md` | Thương hiệu · bác sĩ · cơ sở + tuyến · taxonomy · dữ liệu động |
+| `knowledge/KF-09-design-system.md` | Token production v3.0 · khung trang · form · ô ảnh tạm |
+| `knowledge/KF-11-cong-phap-ly.md` | Cổng pháp lý + bảng rào **R0–R12** + checklist 13 ô |
+| `knowledge/KF-12-hanh-vi-khach-hang.md` | ★ Lõi hành vi: 6 nhóm · 3 rào cản · 5 mức nhận thức · 6 giai đoạn · hành vi trên trang |
+| `knowledge/KF-13-noi-so-phan-doi.md` | ★ Nỗi sợ & phản đối theo 5 BL, kèm câu trả lời đã rà từ cấm |
+| `knowledge/KF-14-proof-bank.md` | Ngân hàng bằng chứng + trạng thái pháp lý từng loại |
+| `knowledge/KF-15-block-library.md` | 24 mã khối `B-*` map 9 màn + bộ khối theo nhiệt độ |
+| `knowledge/KF-16-performance-log.md` | Khung vòng học (đang trống, chờ dữ liệu thật) |
+| `template/lp-skeleton.html` | Khung HTML một file: 9 màn · form + bottom sheet · sticky bar · thank-you view |
+| `prompts/` | `prompt-landing.md` · `prompt-audit.md` · `prompt-variant.md` |
+| `doc/` | `01-cai-dat` · `02-cau-lenh` · `03-output-mau` · `04-prompt-nguoi-moi` · `CHANGELOG` |
+
+### Khác với spec gốc — và vì sao
+
+| # | Spec gốc | Bản này | Lý do |
+|---|---|---|---|
+| 1 | KF-01→KF-11 "đã có" | Gom lại còn **3 file** (`KF-01`, `KF-09`, `KF-11`) lấy từ tri thức repo | Repo đã có brand profile, design system và rào R0–R11 thật. Dùng lại thay vì tạo file rỗng |
+| 2 | KF-12→KF-16 "cần dựng" | **Đã dựng cả 5** | Đây là 5 file làm agent chạy được; `KF-12` và `KF-13` là lõi của yêu cầu "xuất phát từ hành vi khách" |
+| 3 | Palette `#294573 / #3A6CAE / teal / gold / nude / peach` | Dùng **token production `#074E84` / `#EF6103`**; palette KLA ghi lại ở `KF-09` mục 1 là **chưa dùng** | Token production đã kiểm tương phản WCAG và khớp trang đang chạy. Dùng palette mới sẽ làm landing mới lệch hệ thống → **cần brand/pháp chế chốt** (xem *Việc còn treo* #3) |
+| 4 | "R12" được nhắc như rào có sẵn | Thêm **R12 mới** vào bảng, gắn cờ 🆕 chờ pháp chế đánh số | Bảng rào gốc của repo chỉ có R0–R11. R12 gom giới hạn hình ảnh cơ thể của policy Meta/Google/TikTok — giới hạn thật, nhưng mã số chưa chính thức |
+| 5 | "2 bệnh viện + 7 cơ sở chi nhánh" | **Không dùng con số nào**, ghi `[CHỜ XÁC MINH]` | Ba nguồn trong repo nói khác nhau (xem *Việc còn treo* #2) |
+| 6 | 3 vai "CRO + copywriter + UX/UI" | Định lượng **60/25/15** | Để agent biết khi xung đột thì nghiêng về đâu: CRO thắng "đẹp" |
+| 7 | — | Thêm `KF-12` mục 7 **hành vi trên trang** và mục 9 **5 lỗi hành vi** | Lấy từ bản audit landing Mũi v3 — bài học thật, không phải suy luận |
+| 8 | — | Thêm luật **"thiếu dữ liệu thì ẩn khối, không để placeholder lộ ra production"** | Landing Mũi v3 từng để `chờ KF-01`, `Chưa có giá` lên trang thật |
+
+---
+
+## ✅ ĐÃ GIẢI QUYẾT ở v1.1
+
+| # | Việc | Kết quả |
+|---|---|---|
+| ~~1~~ | Bảng bác sĩ × dịch vụ × cơ sở | ✅ **Có đủ từ nguồn live** — 17 bác sĩ kèm chuyên khoa, cơ sở, CCHN, cờ verified (`KF-01` mục 4). Còn lại chỉ là xác minh 4 CCHN thiếu + 6 người chưa verified |
+| ~~2~~ | Số cơ sở hệ thống | ✅ **Chốt: 7 cơ sở** (2 bệnh viện + 5 viện thẩm mỹ) theo `/chi-nhanh/` |
+| — | Taxonomy dịch vụ | ✅ **10 nhóm** theo menu chính, tách Da Liễu / Trị Sắc Tố |
+
+---
+
+## 🔶 VIỆC CÒN TREO — cần người thật chốt
+
+| # | Việc | Chặn gì | Ai chốt |
+|---|---|---|---|
+| **1** | **Nạp case lên `/case-thuc-te/`** — trang đang trống | Màn 5 của **mọi** landing | Marketing + CSKH |
+| **2** | **Bảng kê ảnh ↔ consent ↔ hạn consent** (bản nội bộ) | Màn 5 — rào **R5**. Trang public khai "có đồng ý" nhưng không lộ dữ liệu kiểm chứng | CSKH + pháp chế |
+| **3** | **CCHN cho 4 bác sĩ thiếu** (Alex Han · Nicolas Hung · Felix Tran · Frankie Vu) + xác nhận **6 bác sĩ `status` trống** | Màn 4 khi dùng các bác sĩ đó — rào **R4** | Chuyên môn + HR |
+| **4** | **Bản chính thức chính sách bảo hành** theo nhóm dịch vụ | Màn 7 (giá/offer) | Pháp chế |
+| **5** | **Mốc hồi phục dạng khoảng** theo từng dịch vụ, có bác sĩ xác nhận | Màn 6 và FAQ — `KF-13` mục 9 | Chuyên môn |
+| **6** | **Danh mục thiết bị/vật tư được phép nêu tên** + số lưu hành | Màn 3 — rào **R7** | Kho vật tư + pháp chế |
+| **7** | **Bảng màu cho landing:** token production hay palette KLA | `KF-09` mục 1. Trộn hai bảng làm trang mới lệch trang đang chạy | Brand + pháp chế |
+| **8** | **Mã chính thức cho rào R12** (hình ảnh cơ thể & giảm cân) | `KF-11` mục 2 | Pháp chế |
+| **9** | **Phạm vi giấy phép chi tiết từng viện thẩm mỹ** — `/chi-nhanh/` chỉ nói chung "da, spa, tiểu phẫu" | Landing local — rào **R3** | Pháp chế |
+| **10** | **Làm rõ con số "hơn 3.000.000 ca"** và dữ liệu `rating`/`reviews` trên trang bác sĩ | Badge màn 1 · khối review | Pháp chế |
+| **11** | **Bác sĩ nhóm nha khoa** — không có trong dữ liệu live | Màn 4 của landing KDT | Chuyên môn |
+| **12** | **Bảng ánh xạ mã khối `B-*` ↔ component WordPress** `SCI_Theme_v3` | `KF-15` mục 3 | Dev |
+| **13** | **GXNNDQC cho từng landing** | Rào **R9** — không có thì không được phát hành | Pháp chế (Sở Y tế) |
+
+**Thứ tự nên làm: 1 → 2 → 3 → 4.** Bốn mục này mở nốt màn 4, 5 và 7 — sau đó agent xuất được landing gần như không còn placeholder.
+
+### Việc cần làm ở agent khác
+`Agent-AdsOptimize-Kangnam/knowledge/kn-ho-so-thuong-hieu.md` vẫn liệt kê **Dr. Jolie Huynh** (trang 404) và vẫn ghi cơ sở theo bảng 8 dòng cũ. Cần đồng bộ với `KF-01` v1.1 của agent này.
+
+---
+
+## Dự kiến v1.1 — khi có dữ liệu
+
+- Điền `KF-14` phần bác sĩ và case (sau việc còn treo #1, #5).
+- Mở `KF-16` bằng 3–5 dòng log thật → chuyển 4 giả thuyết ở mục 5 thành pattern có số.
+- Bổ sung `KF-15` mục 3 bảng component WordPress.
+- Chạy `/audit` lại landing Mũi v3 bằng scorecard để có mốc so sánh đầu tiên.
+- Nếu *Việc còn treo #3* chốt chọn palette KLA: cập nhật `KF-09` + `template/lp-skeleton.html`, kiểm lại toàn bộ tương phản.
