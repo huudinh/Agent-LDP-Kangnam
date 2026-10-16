@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Dựng trang hướng dẫn KLA — nhúng nội dung thật từ repo Agent-LDP-Kangnam.
+"""Dựng trang hướng dẫn Agent-LDP-Kangnam — nhúng nội dung thật từ repo Agent-LDP-Kangnam.
 
 Chay:  python tools/build-huong-dan.py
-Ket qua: tools/huong-dan-kla.html  -> publish de lai cung URL artifact
+Ket qua: tools/huong-dan.html  -> publish de lai cung URL artifact
 (https://claude.ai/artifact/JvyWoqxudQFfN5szP2x5ZQ), xem README muc "Huong dan cai dat".
 Sua noi dung trang thi sua tools/huong-dan-kla.tpl.html, khong sua file .html sinh ra."""
 import io, json, os, re, sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "huong-dan-kla.html")
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "huong-dan.html")
 
 KF_ORDER = [
     ("KF-11-cong-phap-ly", "Cổng pháp lý + bảng rào R0–R12", "Rà mọi output. Fail = không xuất trang", True),
@@ -127,7 +127,7 @@ short = copyblock("SYSTEM-PROMPT-NGAN.md")
 parts = []
 for name, _t, _d, _s in KF_ORDER:
     parts.append("<!-- ===== %s.md ===== -->\n\n%s" % (name, kf(name)))
-merged = ("# TRI THỨC GỘP — KANGNAM LANDING AGENT (KLA)\n"
+merged = ("# TRI THỨC GỘP — AGENT-LDP-KANGNAM\n"
           "# 8 file knowledge nối liền, thứ tự đọc: pháp lý → hành vi → thương hiệu → thiết kế\n"
           "# Dùng khi nền tảng không cho upload nhiều file. Bản gốc: Agent-LDP-Kangnam/knowledge/\n\n"
           + "\n\n".join(parts))
@@ -146,7 +146,7 @@ for name, title, desc, star in KF_ORDER:
     )
 kf_rows = "\n".join(rows)
 
-html = io.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "huong-dan-kla.tpl.html"),
+html = io.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "huong-dan.tpl.html"),
                encoding="utf-8").read()
 html = (html
         .replace("@@KF_ROWS@@", kf_rows)

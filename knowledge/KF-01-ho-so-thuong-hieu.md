@@ -60,7 +60,7 @@ Hệ thống **Bệnh viện Thẩm mỹ chuẩn Hàn tại Việt Nam**, nền 
 | Kangnam Cần Thơ | Viện thẩm mỹ | 28 Lý Tự Trọng, P. Ninh Kiều, TP. Cần Thơ | Nam | ❌ không |
 | Kangnam Thanh Hóa | Viện thẩm mỹ | 103 Nguyễn Trãi, P. Hạc Thành, Thanh Hóa | Trung | ❌ không |
 
-> ✅ **Đã chốt (2026-10-16):** trang `/chi-nhanh/` công bố **7 cơ sở**. Các con số từng lưu hành trong repo đều khác: spec KLA ghi *"2 bệnh viện + 7 chi nhánh"* (= 9) · hồ sơ Ads có thêm dòng *"Kangnam Hà Nội (Viện TM) — 194 Trường Chinh"* (= 8) · file brand của CPW/PBP ghi *"3 bệnh viện + 7 viện"* (= 10).
+> ✅ **Đã chốt (2026-10-16):** trang `/chi-nhanh/` công bố **7 cơ sở**. Các con số từng lưu hành trong repo đều khác: spec gốc ghi *"2 bệnh viện + 7 chi nhánh"* (= 9) · hồ sơ Ads có thêm dòng *"Kangnam Hà Nội (Viện TM) — 194 Trường Chinh"* (= 8) · file brand của CPW/PBP ghi *"3 bệnh viện + 7 viện"* (= 10).
 > ⚠️ **Ba địa chỉ sau không có trên `/chi-nhanh/`:** `218 Nguyễn Trãi (SG CS2)` · `194 Trường Chinh` *(các file khác gọi là "Viện Trẻ hoá & Điều trị da công nghệ cao" — có thể là **pháp nhân khác**)* · `chi nhánh Bình Dương`. **Chưa đủ căn cứ nói ba cơ sở này đã đóng.**
 > → **Luật: landing chỉ dùng 7 cơ sở ở bảng trên.** Ba địa chỉ kia chỉ dùng sau khi Pháp chế xác nhận còn hoạt động và còn giấy phép — nêu sai pháp nhân là rào **R3**.
 > Lưu ý `194` cũng là **số giấy phép của bệnh viện Hà Nội** (bệnh viện ở số **190**), nên dòng cũ dễ gây nhầm.

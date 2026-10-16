@@ -1,5 +1,5 @@
 out/*
 !out/.gitkeep
-tools/huong-dan-kla.html
+tools/huong-dan.html
 __pycache__/
 *.pyc

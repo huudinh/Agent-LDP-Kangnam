@@ -7,7 +7,7 @@ Agent này là **prompt + knowledge**, không phải software. Cài = tạo mộ
 ## A. Claude Project (khuyến nghị — ô instructions không giới hạn 8.000 ký tự)
 
 1. Vào [claude.ai](https://claude.ai) → **Projects** → **Create project**.
-2. Tên project: `KLA — Kangnam Landing Agent`.
+2. Tên project: `Agent-LDP-Kangnam`.
 3. Mở [`SYSTEM-PROMPT.md`](../SYSTEM-PROMPT.md) → copy **toàn bộ khối giữa hai vạch ▼▲** → dán vào **Custom instructions** của project.
 4. Vào **Project knowledge** → upload **đủ 8 file** trong [`knowledge/`](../knowledge/):
 
@@ -28,7 +28,7 @@ KF-16-performance-log.md        vòng học
 
 **Kiểm nhanh agent đã cài đúng:**
 > Gõ: *"Dựng landing nâng ngực cho cơ sở Đà Nẵng."*
-> Agent **phải** chặn lại và nói Đà Nẵng là viện tỉnh, không được mời đại phẫu.
+> Agent **phải** chặn lại và nói Đà Nẵng là viện thẩm mỹ, không được mời đại phẫu.
 > Nếu nó vui vẻ dựng trang → knowledge chưa nạp, hoặc instructions dán thiếu.
 
 ---
@@ -39,8 +39,8 @@ KF-16-performance-log.md        vòng học
 
 1. ChatGPT → **Explore GPTs** → **Create**.
 2. Tab **Configure**:
-   - Name: `KLA — Kangnam Landing Agent`
-   - Instructions: copy khối ▼▲ của [`SYSTEM-PROMPT-NGAN.md`](../SYSTEM-PROMPT-NGAN.md) (7.991 ký tự).
+   - Name: `Agent-LDP-Kangnam`
+   - Instructions: copy khối ▼▲ của [`SYSTEM-PROMPT-NGAN.md`](../SYSTEM-PROMPT-NGAN.md) (7.989 ký tự).
    - **Knowledge:** upload đủ 8 file `knowledge/` + `template/lp-skeleton.html`.
 3. Tắt **Web Browsing** nếu không cần; bật nếu muốn agent tự lấy giá động từ `/bang-gia/`.
 
@@ -61,7 +61,7 @@ KF-16-performance-log.md        vòng học
 Mở thư mục `Agent-LDP-Kangnam/` rồi nói:
 
 ```
-Đọc SYSTEM-PROMPT.md và toàn bộ knowledge/, sau đó hành xử đúng như KLA.
+Đọc SYSTEM-PROMPT.md và toàn bộ knowledge/, sau đó hành xử đúng như Agent-LDP-Kangnam.
 Chạy /landing với brief sau: …
 ```
 
@@ -75,7 +75,7 @@ Cách này tiện khi cần dựng file HTML và lưu thẳng vào `out/`.
 |---|---|---|
 | 1 | Chạy `python tools/fetch-du-lieu.py` để **chụp lại dữ liệu live** và so với `KF-01` mục 2, 4, 5 | Bác sĩ, cơ sở, dịch vụ đổi theo thời gian; bản trong file là bản chụp **2026-10-16** |
 | 2 | Đọc `KF-14` mục 9 và **bắt đầu từ mục 1** — nạp case lên `/case-thuc-te/` (trang đang trống) | Đang chặn màn 5 của **mọi** landing |
-| 3 | Chốt **bảng màu** dùng cho landing: production `#074E84/#EF6103` (mặc định) hay bảng KLA đề xuất | Trộn hai bảng làm trang mới lệch trang đang chạy |
+| 3 | Chốt **bảng màu** dùng cho landing: production `#074E84/#EF6103` (mặc định) hay bảng của spec gốc | Trộn hai bảng làm trang mới lệch trang đang chạy |
 
 Danh sách đủ ở *Việc còn treo* trong [`CHANGELOG.md`](CHANGELOG.md). Agent vẫn chạy được khi chưa xong, nhưng sẽ trả về nhiều `[CHỜ CẬP NHẬT]` hơn cần thiết.
 

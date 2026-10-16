@@ -1,4 +1,25 @@
-# CHANGELOG — Agent-LDP-Kangnam (KLA)
+# CHANGELOG — Agent-LDP-Kangnam
+
+---
+
+## v1.2.1 — 2026-10-16 · thống nhất cách đặt tên
+
+Agent có hai tên song song: thư mục là `Agent-LDP-Kangnam` còn tài liệu gọi là *KLA — Kangnam Landing Agent*. **Thống nhất về `Agent-LDP-Kangnam`** cho mọi nơi.
+
+| Chỗ | Trước | Sau |
+|---|---|---|
+| Định danh trong bộ não | *Bạn là **Kangnam Landing Agent (KLA)*** | *Bạn là **Agent-LDP-Kangnam*** |
+| Tên project khi cài (Claude · ChatGPT · Gemini) | `KLA — Kangnam Landing Agent` | `Agent-LDP-Kangnam` |
+| Tiêu đề + H1 trang hướng dẫn | *Kangnam Landing Agent* | *Agent-LDP-Kangnam* |
+| File sinh ra | `tools/huong-dan-kla.*` | `tools/huong-dan.*` |
+| `id` khối dữ liệu trong trang | `kla-payload` | `huong-dan-payload` |
+| Khoá localStorage của checklist | `kla-checklist-v1` | `ldp-kangnam-checklist-v1` |
+
+Chỗ nào trước đây viết *"spec KLA"* / *"palette KLA"* nay đổi thành **"bản đặc tả gốc"** — rõ hơn, vì đó là tài liệu nguồn chứ không phải tên agent. 12 file đã sửa, soát lại còn **0 chỗ** dùng tên cũ.
+
+**Nhân tiện:** bộ não bump lên `Version: 1.2` cho khớp CHANGELOG (đang kẹt ở 1.0); bản ngắn **7.953 / 8.000** ký tự — tên mới dài hơn "KLA" nên đã nới thêm margin; `lp-skeleton.html` đổi nhãn phiên bản v1.0 → v1.2.
+
+> ⚠️ Ai đã tạo project trên Claude/ChatGPT/Gemini bằng tên cũ thì **đổi tên project** cho khớp. Nội dung dán vào không đổi, chỉ cần dán lại Thẻ A hoặc Thẻ B bản mới.
 
 ---
 
@@ -55,7 +76,7 @@ Người dùng chỉ định **5 nguồn dữ liệu chính thống**. Đã lấ
 
 ## v1.0 — 2026-10-16 · bản đầu
 
-**Nguồn gốc:** spec *Kangnam Landing Agent (KLA) – Custom Instructions* (artifact `SJqCtgkuSakBrbj2jQ9WD3`), đối chiếu và nối với tri thức Kangnam đang có trong repo.
+**Nguồn gốc:** bản đặc tả gốc *Custom Instructions* (artifact `SJqCtgkuSakBrbj2jQ9WD3`), đối chiếu và nối với tri thức Kangnam đang có trong repo.
 
 ### Đã dựng
 | File | Nội dung |
@@ -80,7 +101,7 @@ Người dùng chỉ định **5 nguồn dữ liệu chính thống**. Đã lấ
 |---|---|---|---|
 | 1 | KF-01→KF-11 "đã có" | Gom lại còn **3 file** (`KF-01`, `KF-09`, `KF-11`) lấy từ tri thức repo | Repo đã có brand profile, design system và rào R0–R11 thật. Dùng lại thay vì tạo file rỗng |
 | 2 | KF-12→KF-16 "cần dựng" | **Đã dựng cả 5** | Đây là 5 file làm agent chạy được; `KF-12` và `KF-13` là lõi của yêu cầu "xuất phát từ hành vi khách" |
-| 3 | Palette `#294573 / #3A6CAE / teal / gold / nude / peach` | Dùng **token production `#074E84` / `#EF6103`**; palette KLA ghi lại ở `KF-09` mục 1 là **chưa dùng** | Token production đã kiểm tương phản WCAG và khớp trang đang chạy. Dùng palette mới sẽ làm landing mới lệch hệ thống → **cần brand/pháp chế chốt** (xem *Việc còn treo* #3) |
+| 3 | Palette `#294573 / #3A6CAE / teal / gold / nude / peach` | Dùng **token production `#074E84` / `#EF6103`**; palette đó ghi lại ở `KF-09` mục 1 là **chưa dùng** | Token production đã kiểm tương phản WCAG và khớp trang đang chạy. Dùng palette mới sẽ làm landing mới lệch hệ thống → **cần brand/pháp chế chốt** (xem *Việc còn treo* #3) |
 | 4 | "R12" được nhắc như rào có sẵn | Thêm **R12 mới** vào bảng, gắn cờ 🆕 chờ pháp chế đánh số | Bảng rào gốc của repo chỉ có R0–R11. R12 gom giới hạn hình ảnh cơ thể của policy Meta/Google/TikTok — giới hạn thật, nhưng mã số chưa chính thức |
 | 5 | "2 bệnh viện + 7 cơ sở chi nhánh" | **Không dùng con số nào**, ghi `[CHỜ XÁC MINH]` | Ba nguồn trong repo nói khác nhau (xem *Việc còn treo* #2) |
 | 6 | 3 vai "CRO + copywriter + UX/UI" | Định lượng **60/25/15** | Để agent biết khi xung đột thì nghiêng về đâu: CRO thắng "đẹp" |
@@ -109,7 +130,7 @@ Người dùng chỉ định **5 nguồn dữ liệu chính thống**. Đã lấ
 | **4** | **Bản chính thức chính sách bảo hành** theo nhóm dịch vụ | Màn 7 (giá/offer) | Pháp chế |
 | **5** | **Mốc hồi phục dạng khoảng** theo từng dịch vụ, có bác sĩ xác nhận | Màn 6 và FAQ — `KF-13` mục 9 | Chuyên môn |
 | **6** | **Danh mục thiết bị/vật tư được phép nêu tên** + số lưu hành | Màn 3 — rào **R7** | Kho vật tư + pháp chế |
-| **7** | **Bảng màu cho landing:** token production hay palette KLA | `KF-09` mục 1. Trộn hai bảng làm trang mới lệch trang đang chạy | Brand + pháp chế |
+| **7** | **Bảng màu cho landing:** token production hay palette của spec gốc | `KF-09` mục 1. Trộn hai bảng làm trang mới lệch trang đang chạy | Brand + pháp chế |
 | **8** | **Mã chính thức cho rào R12** (hình ảnh cơ thể & giảm cân) | `KF-11` mục 2 | Pháp chế |
 | **9** | **Phạm vi giấy phép chi tiết từng viện thẩm mỹ** — `/chi-nhanh/` chỉ nói chung "da, spa, tiểu phẫu" | Landing local — rào **R3** | Pháp chế |
 | **10** | **Làm rõ con số "hơn 3.000.000 ca"** và dữ liệu `rating`/`reviews` trên trang bác sĩ | Badge màn 1 · khối review | Pháp chế |
@@ -130,4 +151,4 @@ Người dùng chỉ định **5 nguồn dữ liệu chính thống**. Đã lấ
 - Mở `KF-16` bằng 3–5 dòng log thật → chuyển 4 giả thuyết ở mục 5 thành pattern có số.
 - Bổ sung `KF-15` mục 3 bảng component WordPress.
 - Chạy `/audit` lại landing Mũi v3 bằng scorecard để có mốc so sánh đầu tiên.
-- Nếu *Việc còn treo #3* chốt chọn palette KLA: cập nhật `KF-09` + `template/lp-skeleton.html`, kiểm lại toàn bộ tương phản.
+- Nếu *Việc còn treo #3* chốt chọn palette của spec gốc: cập nhật `KF-09` + `template/lp-skeleton.html`, kiểm lại toàn bộ tương phản.

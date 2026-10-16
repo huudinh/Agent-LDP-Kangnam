@@ -16,9 +16,9 @@ Cập nhật: 2026-10-16
 |---|---|---|
 | **Production v3.0** ✅ | navy `#074E84` · CTA `#EF6103` | **Dựng landing — dùng bảng này**, để trang mới khớp trang đang chạy |
 | Nhận diện cấp thương hiệu | navy `#003c77` · CTA `#f6871f` | Ấn phẩm cấp brand: profile, brochure, biển hiệu |
-| Spec KLA đề xuất 🔶 | `#294573` · accent `#3A6CAE` · teal `#2F8E7E` · gold `#9F7131` · nude `#F6F1ED` · peach `#F9E6D7` | **Chưa dùng.** Bảng này đến từ spec KLA, chưa đối chiếu tương phản và chưa khớp production |
+| Spec gốc đề xuất 🔶 | `#294573` · accent `#3A6CAE` · teal `#2F8E7E` · gold `#9F7131` · nude `#F6F1ED` · peach `#F9E6D7` | **Chưa dùng.** Bảng này đến từ bản đặc tả gốc, chưa đối chiếu tương phản và chưa khớp production |
 
-**Luật:** landing dùng **token production** ở mục 2. Muốn chuyển sang bảng KLA thì phải chạy lại kiểm tương phản WCAG cho từng cặp màu và **brand + pháp chế chốt một lần** — xem *Việc còn treo* ở [`doc/CHANGELOG.md`](../doc/CHANGELOG.md). ⛔ Không trộn hai bảng trong một trang.
+**Luật:** landing dùng **token production** ở mục 2. Muốn chuyển sang bảng của spec gốc thì phải chạy lại kiểm tương phản WCAG cho từng cặp màu và **brand + pháp chế chốt một lần** — xem *Việc còn treo* ở [`doc/CHANGELOG.md`](../doc/CHANGELOG.md). ⛔ Không trộn hai bảng trong một trang.
 
 ---
 

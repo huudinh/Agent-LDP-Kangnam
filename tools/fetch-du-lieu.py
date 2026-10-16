@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-fetch-du-lieu.py — lấy dữ liệu live của Kangnam về làm bản chụp cho agent KLA.
+fetch-du-lieu.py — lấy dữ liệu live của Kangnam về làm bản chụp cho Agent-LDP-Kangnam.
 
 Năm nguồn chính thống (xem knowledge/KF-01 mục §0):
   bác sĩ   /doi-ngu-bac-si/        -> JSON nhúng id="kn-doctors-data"
@@ -29,7 +29,7 @@ import sys
 import urllib.request
 
 BASE = "https://benhvienthammykangnam.com.vn"
-UA = "Mozilla/5.0 (compatible; KLA-snapshot/1.0)"
+UA = "Mozilla/5.0 (compatible; Agent-LDP-Kangnam-snapshot/1.0)"
 TIMEOUT = 60
 
 PAGES = {
@@ -161,7 +161,7 @@ def main():
         except (AttributeError, ValueError):
             pass
 
-    ap = argparse.ArgumentParser(description="Chup du lieu live Kangnam cho agent KLA")
+    ap = argparse.ArgumentParser(description="Chup du lieu live Kangnam cho Agent-LDP-Kangnam")
     ap.add_argument("--out", help="thu muc ghi snapshot (vd out/)")
     ap.add_argument("--chi", nargs="*", choices=sorted(PAGES), help="chi lay vai nguon")
     args = ap.parse_args()

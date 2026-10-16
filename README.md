@@ -1,4 +1,4 @@
-# Agent-LDP-Kangnam — Kangnam Landing Agent (KLA)
+# Agent-LDP-Kangnam
 
 **Agent chuyên làm landing page (LDP) cho hệ sinh thái Kangnam, xuất phát từ hành vi khách hàng.**
 
@@ -16,7 +16,7 @@ Không tối ưu cho lượt xem, time-on-page, hay độ "đẹp". Một trang 
 
 Trang hướng dẫn cài trong ~15 phút: **ba thẻ Copy sẵn** (bộ não · bản ngắn · tri thức gộp), các bước cho **Claude · ChatGPT · Gemini**, bảng **8 file tri thức** và **8 lệnh**, **42 mẫu prompt** copy được (có nhóm *Hỏi dẫn* cho người chưa có brief), hai cổng pháp lý cần người quyết kèm **checklist trước khi publish**, nguồn dữ liệu live và việc còn treo.
 
-> Nội dung trong trang lấy thẳng từ repo này nên luôn khớp bản mới nhất. Dựng lại sau khi sửa knowledge: chạy generator trong scratchpad rồi republish cùng URL.
+> Nội dung trong trang lấy thẳng từ repo này nên luôn khớp bản mới nhất. Dựng lại sau khi sửa knowledge: `python tools/build-huong-dan.py` rồi republish cùng URL.
 
 ---
 
@@ -89,7 +89,7 @@ Trang **Nóng/CDP** chỉ dùng 1→4 hoặc 5→7→9. Trang **Lạnh** dùng �
 ```
 Agent-LDP-Kangnam/
 ├── SYSTEM-PROMPT.md            bộ não đầy đủ (Claude Project / Gemini)
-├── SYSTEM-PROMPT-NGAN.md       bản 7.989 ký tự (ChatGPT Custom GPT, giới hạn 8.000)
+├── SYSTEM-PROMPT-NGAN.md       bản 7.953 ký tự (ChatGPT Custom GPT, giới hạn 8.000)
 ├── knowledge/                  ← nạp TOÀN BỘ vào Knowledge của project
 │   ├── KF-11-cong-phap-ly.md        cổng pháp lý + rào R0–R12   ★ đọc trước
 │   ├── KF-12-hanh-vi-khach-hang.md  hành vi khách               ★ lõi của agent
@@ -100,7 +100,7 @@ Agent-LDP-Kangnam/
 │   ├── KF-09-design-system.md       token · khung trang · form
 │   └── KF-16-performance-log.md     vòng học (đang trống)
 ├── template/lp-skeleton.html   khung HTML một file, 9 màn, mobile-first
-├── tools/fetch-du-lieu.py      chụp lại 5 nguồn dữ liệu live (bác sĩ · cơ sở · case · ảnh · menu)
+├── tools/                      fetch-du-lieu.py (chụp 5 nguồn live) · build-huong-dan.py (dựng trang hướng dẫn)
 ├── prompts/                    42 prompt mẫu: wizard · landing · audit · variant
 ├── doc/                        cài đặt · câu lệnh · output mẫu · người mới · changelog
 └── out/                        nơi lưu output, file HTML đã dựng và snapshot dữ liệu
@@ -181,20 +181,20 @@ Chụp lại bất cứ lúc nào: `python tools/fetch-du-lieu.py --out out/` �
 Bốn việc chặn nhiều nhất: ① **nạp case lên `/case-thuc-te/`** (chặn màn 5 của mọi landing) → ② **bảng kê consent nội bộ cho ảnh** → ③ **CCHN cho 4 bác sĩ thiếu + xác nhận 6 người chưa verified** → ④ **chính sách bảo hành bản chi tiết**.
 Danh sách đủ, kèm ai chốt: [`doc/CHANGELOG.md`](doc/CHANGELOG.md) mục *Việc còn treo*.
 
-**Hai điểm agent cố ý chưa chọn bên:** bảng màu (production `#074E84/#EF6103` đang dùng vs palette spec KLA chưa kiểm tương phản) · mã rào **R12** (có thật theo policy nền tảng, chưa được pháp chế đánh số).
+**Hai điểm agent cố ý chưa chọn bên:** bảng màu (production `#074E84/#EF6103` đang dùng vs palette trong spec gốc chưa kiểm tương phản) · mã rào **R12** (có thật theo policy nền tảng, chưa được pháp chế đánh số).
 
 ---
 
 ## 8. Quan hệ với các agent khác trong repo
 
-| Agent | Khác gì KLA |
+| Agent | Khác gì agent này |
 |---|---|
-| [`Agent-AdsOptimize-Kangnam`](../Agent-AdsOptimize-Kangnam/) | Làm **bộ từ khoá + mẫu quảng cáo**. KLA nhận đầu ra của nó làm **đầu vào Tầng 1** |
-| [`Agent-CRM-Automation`](../Agent-CRM-Automation/) | Làm **luồng tái khai thác + LP cho khách cũ**. KLA làm LP cho **traffic mới từ chiến dịch** |
-| [`Kangnam-Agent-Factory`](../Kangnam-Agent-Factory/) | Làm **kịch bản hội thoại và vận hành**. KLA dừng ở lúc lead vào CRM |
-| [`Agent-KN-CPW`](../Agent-KN-CPW/) | Làm **content SEO/GEO** (khung PAS). KLA làm trang chạy ads (khung trả lời trước) |
+| [`Agent-AdsOptimize-Kangnam`](../Agent-AdsOptimize-Kangnam/) | Làm **bộ từ khoá + mẫu quảng cáo**. Agent-LDP-Kangnam nhận đầu ra của nó làm **đầu vào Tầng 1** |
+| [`Agent-CRM-Automation`](../Agent-CRM-Automation/) | Làm **luồng tái khai thác + LP cho khách cũ**. Agent-LDP-Kangnam làm LP cho **traffic mới từ chiến dịch** |
+| [`Kangnam-Agent-Factory`](../Kangnam-Agent-Factory/) | Làm **kịch bản hội thoại và vận hành**. Agent-LDP-Kangnam dừng ở lúc lead vào CRM |
+| [`Agent-KN-CPW`](../Agent-KN-CPW/) | Làm **content SEO/GEO** (khung PAS). Agent-LDP-Kangnam làm trang chạy ads (khung trả lời trước) |
 
-**Ranh giới:** cơ xương khớp / PRP khớp → agent CXK-CPW. Nghiệp vụ nha khoa chuyên sâu → agent nha khoa riêng (KLA vẫn dựng được LP nha khoa, nhưng phải đổi thứ tự trust theo `KF-13` mục 4).
+**Ranh giới:** cơ xương khớp / PRP khớp → agent CXK-CPW. Nghiệp vụ nha khoa chuyên sâu → agent nha khoa riêng (Agent-LDP-Kangnam vẫn dựng được LP nha khoa, nhưng phải đổi thứ tự trust theo `KF-13` mục 4).
 
 **Tri thức dùng lại từ repo:** `KF-01` kế thừa `kn-ho-so-thuong-hieu.md` v2.1 · `KF-09` kế thừa `kn-khung-landing.md` v3.0 · `KF-11` kế thừa bảng rào R0–R11 của `geo-rao-phap-ly.md` · `KF-12` kế thừa `K2-khach-hang.md`, `K3-hanh-vi-trang-thai.md`, `kn-chan-dung-hanh-trinh.md`. Sửa dữ liệu ở đầu nguồn thì nhớ đồng bộ sang đây.
 
