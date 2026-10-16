@@ -14,7 +14,7 @@ Không tối ưu cho lượt xem, time-on-page, hay độ "đẹp". Một trang 
 
 **<https://claude.ai/artifact/JvyWoqxudQFfN5szP2x5ZQ>**
 
-Trang hướng dẫn cài trong ~15 phút: **ba thẻ Copy sẵn** (bộ não · bản ngắn · tri thức gộp), các bước cho **Claude · ChatGPT · Gemini**, bảng **8 file tri thức** và **7 lệnh**, quy trình 3 tầng + 9 màn, cổng pháp lý kèm **checklist trước khi publish**, và 5 nguồn dữ liệu live.
+Trang hướng dẫn cài trong ~15 phút: **ba thẻ Copy sẵn** (bộ não · bản ngắn · tri thức gộp), các bước cho **Claude · ChatGPT · Gemini**, bảng **8 file tri thức** và **8 lệnh**, **42 mẫu prompt** copy được (có nhóm *Hỏi dẫn* cho người chưa có brief), hai cổng pháp lý cần người quyết kèm **checklist trước khi publish**, nguồn dữ liệu live và việc còn treo.
 
 > Nội dung trong trang lấy thẳng từ repo này nên luôn khớp bản mới nhất. Dựng lại sau khi sửa knowledge: chạy generator trong scratchpad rồi republish cùng URL.
 
@@ -89,7 +89,7 @@ Trang **Nóng/CDP** chỉ dùng 1→4 hoặc 5→7→9. Trang **Lạnh** dùng �
 ```
 Agent-LDP-Kangnam/
 ├── SYSTEM-PROMPT.md            bộ não đầy đủ (Claude Project / Gemini)
-├── SYSTEM-PROMPT-NGAN.md       bản 7.991 ký tự (ChatGPT Custom GPT, giới hạn 8.000)
+├── SYSTEM-PROMPT-NGAN.md       bản 7.989 ký tự (ChatGPT Custom GPT, giới hạn 8.000)
 ├── knowledge/                  ← nạp TOÀN BỘ vào Knowledge của project
 │   ├── KF-11-cong-phap-ly.md        cổng pháp lý + rào R0–R12   ★ đọc trước
 │   ├── KF-12-hanh-vi-khach-hang.md  hành vi khách               ★ lõi của agent
@@ -101,7 +101,7 @@ Agent-LDP-Kangnam/
 │   └── KF-16-performance-log.md     vòng học (đang trống)
 ├── template/lp-skeleton.html   khung HTML một file, 9 màn, mobile-first
 ├── tools/fetch-du-lieu.py      chụp lại 5 nguồn dữ liệu live (bác sĩ · cơ sở · case · ảnh · menu)
-├── prompts/                    prompt mẫu: landing · audit · variant
+├── prompts/                    42 prompt mẫu: wizard · landing · audit · variant
 ├── doc/                        cài đặt · câu lệnh · output mẫu · người mới · changelog
 └── out/                        nơi lưu output, file HTML đã dựng và snapshot dữ liệu
 ```
@@ -110,11 +110,12 @@ Agent-LDP-Kangnam/
 
 ---
 
-## 5. Bảy lệnh
+## 5. Tám lệnh
 
 | Lệnh | Việc agent làm |
 |---|---|
-| `/brief` | Chuẩn hoá brief, hỏi trường thiếu (tối đa 3 câu) |
+| `/wizard` | **Hỏi dẫn từ đầu** khi chỉ có tên dịch vụ — 3 vòng × 3 câu, có phương án chọn sẵn |
+| `/brief` | Chuẩn hoá brief đã có, hỏi trường thiếu (tối đa 3 câu) |
 | `/landing` | Trọn bộ, output 11 mục A→K |
 | `/audit [URL]` | Chấm theo scorecard, liệt kê lỗi theo mức, **viết lại phần yếu nhất** |
 | `/variant [kênh]` | Chuyển landing master sang kênh khác |
@@ -122,7 +123,7 @@ Agent-LDP-Kangnam/
 | `/ab` | 3 giả thuyết + chỉ số kết luận + thời hạn |
 | `/prototype` | Xuất HTML một file + bảng kê ảnh cần cấp |
 
-Chi tiết [`doc/02-cau-lenh.md`](doc/02-cau-lenh.md) · output mẫu đầy đủ [`doc/03-output-mau.md`](doc/03-output-mau.md).
+Chưa có brief, chỉ biết tên dịch vụ → dùng `/wizard`. Chi tiết [`doc/02-cau-lenh.md`](doc/02-cau-lenh.md) · output mẫu đầy đủ [`doc/03-output-mau.md`](doc/03-output-mau.md).
 
 ---
 

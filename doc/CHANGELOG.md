@@ -2,6 +2,31 @@
 
 ---
 
+## v1.2 — 2026-10-16 · chế độ hỏi dẫn `/wizard`
+
+Người dùng thường chỉ biết *"tôi muốn làm landing Hàm mặt"* chứ chưa có brief. Trước v1.2 agent chỉ hỏi gộp tối đa 3 câu rồi tự giả định phần còn lại — đủ cho người đã quen, nhưng người mới không biết mình đang thiếu gì.
+
+**Thêm `/wizard` — hỏi dẫn 3 vòng × 3 câu**, mỗi câu kèm phương án chọn sẵn và lựa chọn *"để agent chọn"*; chốt lại sau từng vòng, đủ 9 ô thì in **BRIEF ĐÃ KHOÁ** rồi hỏi một câu *"Chạy /landing luôn chứ?"*.
+
+| Vòng | Khoá cái gì | Ba câu |
+|---|---|---|
+| 1 | Khung trang | dịch vụ con · kênh · **ad copy / keyword nguyên văn** |
+| 2 | Người đọc trang | chân dung · nhiệt độ + mức nhận thức · cơ sở + tuyến |
+| 3 | Vật liệu đang có | CTA mục tiêu · offer · bác sĩ / ảnh case / bảng giá đã có chưa |
+
+**Hai cổng chặn sớm** — agent dừng giữa chừng thay vì hỏi hết rồi mới báo lỗi: ① đại phẫu + cơ sở không phải tuyến bệnh viện → dừng ở vòng 2, nêu hai cách xử lý R3 · ② tên bác sĩ không có trong danh sách live → không ghi vào brief, nêu bốn cổng R4.
+
+**Phương án chọn sẵn lấy từ tri thức, không bịa:** dịch vụ con từ `KF-01` mục 5 · kênh từ ma trận §5.1 · chân dung từ `KF-12` mục 3 · cơ sở từ `KF-01` mục 2. Trường pháp lý vẫn **không bao giờ** được giả định, kể cả khi người dùng chọn *"để agent chọn"*.
+
+### Sửa gì
+- `SYSTEM-PROMPT.md` → thêm **§4.1** chế độ hỏi dẫn, thêm `/wizard` vào bảng lệnh (7 → **8 lệnh**), sửa luật tự suy lệnh.
+- `SYSTEM-PROMPT-NGAN.md` → thêm mục `/wizard` rút gọn; cắt mục VÒNG HỌC và nén 8 chỗ khác để vẫn vừa giới hạn: **7.989 / 8.000 ký tự**. Nhân tiện sửa R4 từ 3 cổng thành **4 cổng** cho khớp bộ não.
+- **Thêm `prompts/prompt-wizard.md`** — prompt khởi động, **10 prompt một dòng cho 10 nhóm dịch vụ**, bản dùng khi đã có sẵn một phần, bảng 3 vòng, và 6 câu trả lời nhanh khi đang trong vòng hỏi.
+- `doc/02-cau-lenh.md` + `README.md` → cập nhật 8 lệnh.
+- Trang hướng dẫn → nhóm prompt mới **Hỏi dẫn (18 thẻ)**, tổng **42 mẫu prompt**.
+
+---
+
 ## v1.1 — 2026-10-16 · nối agent với dữ liệu live
 
 Người dùng chỉ định **5 nguồn dữ liệu chính thống**. Đã lấy dữ liệu thật về, đối chiếu, sửa knowledge và thêm script chụp lại.

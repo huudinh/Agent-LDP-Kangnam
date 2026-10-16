@@ -228,7 +228,7 @@ footer b{color:var(--ink-2)}
       <span class="chip on">v1.1</span>
       <span class="chip">Agent-LDP-Kangnam</span>
       <span class="chip">8 file tri thức</span>
-      <span class="chip">7 lệnh</span>
+      <span class="chip">8 lệnh</span>
       <span class="chip">Claude · ChatGPT · Gemini</span>
     </div>
     <p class="dim" style="margin-top:16px">Đo bằng bốn chỉ số: <b>CVR</b> · <b>tỉ lệ lead kết nối</b> · <b>booking</b> · <b>show-up</b>. Không tối ưu lượt xem, time-on-page hay độ &ldquo;đẹp&rdquo;.</p>
@@ -371,16 +371,17 @@ footer b{color:var(--ink-2)}
 <section id="lenh">
   <div class="sec-h">
     <span class="pre">Vận hành</span>
-    <h2>Bảy lệnh</h2>
+    <h2>Tám lệnh</h2>
     <span class="bar"></span>
-    <p>Không gọi lệnh thì agent tự suy (có brief → <code>/landing</code> · có URL → <code>/audit</code>)
+    <p>Không gọi lệnh thì agent tự suy (<b>chỉ có tên dịch vụ → <code>/wizard</code></b> · có brief → <code>/landing</code> · có URL → <code>/audit</code>)
       và <b>nói rõ đã chọn lệnh nào</b>.</p>
   </div>
   <div class="tw">
     <table>
       <thead><tr><th>Lệnh</th><th>Việc agent làm</th><th>Input tối thiểu</th></tr></thead>
       <tbody>
-        <tr><td><code>/brief</code></td><td>Chuẩn hoá brief, hỏi trường thiếu (tối đa 3 câu)</td><td>một ý tưởng chiến dịch</td></tr>
+        <tr class="hl"><td><code>/wizard</code></td><td><b>Hỏi dẫn từ đầu</b> — 3 vòng × 3 câu, mỗi câu có phương án chọn sẵn, chốt lại sau từng vòng</td><td><b>chỉ cần tên dịch vụ</b></td></tr>
+        <tr><td><code>/brief</code></td><td>Chuẩn hoá brief đã có, hỏi trường thiếu (tối đa 3 câu)</td><td>một brief dở dang</td></tr>
         <tr class="hl"><td><code>/landing</code></td><td><b>Dựng trọn bộ</b> — output 11 mục A→K</td><td>brief đủ trường <code>*</code></td></tr>
         <tr><td><code>/audit</code></td><td>Chấm landing hiện có, liệt kê lỗi theo mức, <b>viết lại phần yếu nhất</b></td><td>URL + kênh + ad copy</td></tr>
         <tr><td><code>/variant</code></td><td>Chuyển landing master sang kênh khác</td><td>landing master + kênh mới</td></tr>
@@ -414,13 +415,16 @@ footer b{color:var(--ink-2)}
     <span class="pre">Dán là chạy</span>
     <h2>@@PROMPT_N@@ mẫu prompt</h2>
     <span class="bar"></span>
-    <p>Lấy nguyên văn từ <code>prompts/</code> trong repo. Phần trong <code>[ngoặc vuông]</code> là chỗ bạn điền —
-      điền trước thì agent không phải hỏi lại. <b>Chép ad copy / keyword đúng từng chữ</b>, kể cả lỗi chính tả của mẫu quảng cáo:
-      đó là thứ khoá message-match.</p>
+    <p><b>Chưa có brief, chỉ biết mình muốn làm landing dịch vụ nào?</b> Dùng nhóm <b>Hỏi dẫn</b> —
+      agent sẽ hỏi bạn theo vòng, mỗi vòng tối đa 3 câu, mỗi câu có phương án chọn sẵn.
+      Đã có brief thì vào thẳng nhóm <b>Dựng landing</b>.</p>
+    <p>Lấy nguyên văn từ <code>prompts/</code> trong repo. Phần trong <code>[ngoặc vuông]</code> là chỗ bạn điền.
+      <b>Chép ad copy / keyword đúng từng chữ</b>, kể cả lỗi chính tả của mẫu quảng cáo — đó là thứ khoá message-match.</p>
   </div>
 
   <div class="qa-bar" role="group" aria-label="Lọc prompt">
     <button data-f="all" aria-pressed="true">Tất cả · @@PROMPT_N@@</button>
+    <button data-f="wizard" aria-pressed="false">Hỏi dẫn · @@N_WIZARD@@</button>
     <button data-f="landing" aria-pressed="false">Dựng landing · @@N_LANDING@@</button>
     <button data-f="audit" aria-pressed="false">Audit · @@N_AUDIT@@</button>
     <button data-f="variant" aria-pressed="false">Chuyển kênh · @@N_VARIANT@@</button>

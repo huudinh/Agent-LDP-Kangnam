@@ -41,6 +41,7 @@ def fmt(n):
 
 # ---------------------------------------------------------------- prompts
 PROMPT_FILES = [
+    ("wizard", "Hỏi dẫn từ đầu", "prompts/prompt-wizard.md"),
     ("landing", "Dựng landing", "prompts/prompt-landing.md"),
     ("audit", "Audit trang đang chạy", "prompts/prompt-audit.md"),
     ("variant", "Chuyển kênh & biến thể", "prompts/prompt-variant.md"),
@@ -155,6 +156,7 @@ html = (html
         .replace("@@KB_C@@", str(round(len(merged.encode("utf-8")) / 1024)))
         .replace("@@PROMPT_CARDS@@", prompt_cards)
         .replace("@@PROMPT_N@@", str(prompt_n))
+        .replace("@@N_WIZARD@@", str(prompt_counts["wizard"]))
         .replace("@@N_LANDING@@", str(prompt_counts["landing"]))
         .replace("@@N_AUDIT@@", str(prompt_counts["audit"]))
         .replace("@@N_VARIANT@@", str(prompt_counts["variant"]))

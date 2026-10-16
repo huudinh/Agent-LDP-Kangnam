@@ -1,8 +1,9 @@
-# 02 — BẢY LỆNH CỦA AGENT
+# 02 — TÁM LỆNH CỦA AGENT
 
 | Lệnh | Việc agent làm | Input tối thiểu | Output |
 |---|---|---|---|
-| `/brief` | Chuẩn hoá brief, hỏi trường thiếu (tối đa 3 câu) | một ý tưởng chiến dịch | brief 9 trường đã chuẩn hoá |
+| `/wizard` | **Hỏi dẫn từ đầu** — 3 vòng × 3 câu, mỗi câu có phương án chọn sẵn | **chỉ cần tên dịch vụ** | BRIEF ĐÃ KHOÁ 9 dòng → chạy tiếp `/landing` |
+| `/brief` | Chuẩn hoá brief đã có, hỏi trường thiếu (tối đa 3 câu) | một brief dở dang | brief 9 trường đã chuẩn hoá |
 | `/landing` | Dựng trọn bộ | brief đủ trường `*` | output A→K |
 | `/audit` | Chấm landing hiện có | URL hoặc nội dung + kênh + ad copy | điểm scorecard + danh sách lỗi theo mức + phần viết lại |
 | `/variant` | Chuyển sang kênh khác | landing master + kênh mới | phần KHÁC master + scorecard mới |
@@ -10,7 +11,27 @@
 | `/ab` | Đề xuất test | landing + chỉ số đang có | 3 giả thuyết + chỉ số kết luận + thời hạn |
 | `/prototype` | Xuất HTML một file | output `/landing` | file `.html` mobile-first + bảng kê ảnh |
 
-Không gọi lệnh → agent tự suy (có brief → `/landing` · có URL → `/audit` · có landing cũ + kênh mới → `/variant`) và **nói rõ đã chọn lệnh nào**.
+Không gọi lệnh → agent tự suy (**chỉ có tên dịch vụ → `/wizard`** · có brief → `/landing` · có URL → `/audit` · có landing cũ + kênh mới → `/variant`) và **nói rõ đã chọn lệnh nào**.
+
+---
+
+## 0. `/wizard` — khi chỉ biết tên dịch vụ
+
+Dùng khi bạn chưa có brief: *"tôi muốn làm landing Hàm mặt"*. Agent hỏi dẫn **theo vòng, mỗi vòng tối đa 3 câu**, mỗi câu kèm phương án chọn sẵn và lựa chọn *"để agent chọn"*. Sau mỗi vòng nó chốt lại một dòng rồi mới hỏi tiếp — ⛔ không bắn 9 câu một lúc.
+
+| Vòng | Khoá cái gì | Ba câu |
+|---|---|---|
+| **1** | Khung trang | dịch vụ con · kênh · **ad copy / keyword nguyên văn** |
+| **2** | Người đọc trang | chân dung (6 nhóm `KF-12`) · nhiệt độ + mức nhận thức · cơ sở + tuyến |
+| **3** | Vật liệu đang có | CTA mục tiêu · offer · bác sĩ / ảnh case / bảng giá **đã có chưa** |
+
+Đủ 9 ô → agent in **BRIEF ĐÃ KHOÁ** rồi hỏi đúng một câu *"Chạy `/landing` luôn chứ?"*.
+
+**Agent dừng giữa chừng trong hai trường hợp:** dịch vụ đại phẫu mà cơ sở khai không phải tuyến bệnh viện (dừng ở vòng 2, nêu hai cách xử lý R3) · bạn khai tên bác sĩ không có trong danh sách live (không ghi tên đó vào brief).
+
+Gõ *"đủ rồi, cứ làm"* bất cứ lúc nào → agent dừng hỏi, giả định các ô còn lại **trừ trường pháp lý**, ghi khối GIẢ ĐỊNH rồi chạy tiếp.
+
+Prompt mẫu cho cả 10 nhóm dịch vụ: [`prompts/prompt-wizard.md`](../prompts/prompt-wizard.md).
 
 ---
 
@@ -90,7 +111,7 @@ Luôn kèm **BẢNG KÊ ẢNH CẦN CẤP** (màn · tỉ lệ · nội dung c�
 ## Thứ tự dùng điển hình
 
 ```
-/brief  →  /landing  →  (sửa theo scorecard)  →  /prototype
+/wizard →  /landing  →  (sửa theo scorecard)  →  /prototype
                                                      ↓
                                               publish + đo
                                                      ↓

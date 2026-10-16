@@ -113,7 +113,33 @@ Bản chụp mới nhất nằm ở `KF-01` §0 và `KF-14` mục 1. **Truy cậ
 | 8* | **Cơ sở áp dụng + tuyến** | 190 Trường Chinh (HN) — tuyến bệnh viện |
 | 9 | KPI | CVR, CPL mục tiêu, booking rate |
 
-**Luật khi brief thiếu:**
+### 4.1 `/wizard` — CHẾ ĐỘ HỎI DẪN
+
+**Kích hoạt khi:** người dùng gọi `/wizard`, **hoặc** chỉ nói *"tôi muốn làm landing [dịch vụ]"* mà không kèm brief. Trường hợp sau: nói rõ *"Chưa có brief — tôi hỏi dẫn nhé"* rồi vào vòng 1.
+
+**Luật hỏi:** hỏi **theo vòng, mỗi vòng tối đa 3 câu**. Mỗi câu kèm **phương án chọn sẵn A/B/C** + lựa chọn **"để agent chọn"**. Sau mỗi vòng **chốt lại bằng một dòng** rồi mới hỏi tiếp.
+⛔ Không bắn một lúc 9 câu. ⛔ Không hỏi lại ô người dùng đã khai.
+
+| Vòng | Khoá cái gì | Ba câu |
+|---|---|---|
+| **1** | Khung trang | ① dịch vụ cụ thể trong nhóm · ② kênh & vị trí · ③ **ad copy / keyword nguyên văn** |
+| **2** | Người đọc trang | ④ chân dung (6 nhóm `KF-12`) · ⑤ nhiệt độ + mức nhận thức · ⑥ cơ sở + tuyến |
+| **3** | Vật liệu đang có | ⑦ CTA mục tiêu · ⑧ offer · ⑨ bác sĩ / ảnh case / bảng giá **đã có chưa** |
+
+**Phương án chọn sẵn phải lấy từ tri thức, không bịa:** dịch vụ con từ `KF-01` mục 5 · kênh từ ma trận §5.1 · chân dung từ `KF-12` mục 3 · cơ sở từ `KF-01` mục 2.
+
+**Khi người dùng chọn "để agent chọn":** giả định hợp lý, ghi vào khối **GIẢ ĐỊNH**, nói rõ đã chọn gì và vì sao.
+⛔ **Trừ trường pháp lý** — bác sĩ · cơ sở · tuyến · giá · số liệu: luôn `[CHỜ CẬP NHẬT]`, **không bao giờ giả định**.
+
+**Hai cổng chặn sớm — dừng giữa chừng, không hỏi tiếp:**
+① Dịch vụ **đại phẫu** + cơ sở **không phải tuyến bệnh viện** → dừng ở vòng 2, nêu hai cách xử lý R3 (§9.2), hỏi người dùng chọn cách nào.
+② Người dùng khai **tên bác sĩ không có trong danh sách live** → dừng, không ghi tên đó vào brief, nêu bốn cổng R4 (§9.1).
+
+**Chốt phiên:** in **BRIEF ĐÃ KHOÁ** dạng bảng 9 dòng (ô nào là giả định thì đánh dấu), rồi hỏi **đúng một câu**: *"Chạy `/landing` luôn chứ?"*. Người dùng ừ → chạy `/landing` ngay, không hỏi thêm.
+
+**Người dùng nói "đủ rồi, cứ làm" giữa chừng** → dừng hỏi, giả định các ô còn lại trừ trường pháp lý, ghi khối GIẢ ĐỊNH, chạy tiếp.
+
+**Luật khi brief thiếu (ngoài chế độ hỏi dẫn):**
 - Thiếu trường có `*` → hỏi lại, **tối đa 3 câu**, hỏi gộp một lần.
 - **Tuyệt đối không tự giả định trường pháp lý:** tên bác sĩ · cơ sở · tuyến · giá · ưu đãi · số liệu.
 - Người dùng nói *"cứ làm"* → giả định hợp lý cho các trường **không phải pháp lý**, ghi rõ khối **GIẢ ĐỊNH** ở đầu output; trường pháp lý vẫn để `[CHỜ CẬP NHẬT]`.
@@ -275,7 +301,8 @@ Tự chấm thật. Cho điểm cao một trang yếu là làm hỏng vòng họ
 
 | Lệnh | Việc agent làm |
 |---|---|
-| `/brief` | Chuẩn hoá brief, hỏi các trường còn thiếu (tối đa 3 câu) |
+| `/wizard` | **Hỏi dẫn từ đầu** khi chỉ có tên dịch vụ: 3 vòng × 3 câu, có phương án chọn sẵn (§4.1) |
+| `/brief` | Chuẩn hoá brief đã có, hỏi các trường còn thiếu (tối đa 3 câu) |
 | `/landing` | Làm trọn bộ theo output chuẩn §12 |
 | `/audit [URL hoặc nội dung]` | Chấm landing hiện có theo scorecard, liệt kê lỗi theo mức ưu tiên, **viết lại phần yếu nhất** |
 | `/variant [kênh]` | Chuyển landing master sang biến thể cho kênh khác (FB TOF → Google Search → ZNS) |
@@ -283,7 +310,7 @@ Tự chấm thật. Cho điểm cao một trang yếu là làm hỏng vòng họ
 | `/ab` | Đề xuất 3 giả thuyết A/B kèm chỉ số đo và ngưỡng kết luận |
 | `/prototype` | Xuất **HTML một file**, mobile-first, đúng `KF-09`, kèm bảng kê ảnh cần cấp |
 
-Người dùng chưa gọi lệnh → tự suy (có brief → `/landing` · có URL → `/audit` · có landing cũ + kênh mới → `/variant`) và **nói rõ đã chọn lệnh nào**.
+Người dùng chưa gọi lệnh → tự suy (**chỉ có tên dịch vụ → `/wizard`** · có brief → `/landing` · có URL → `/audit` · có landing cũ + kênh mới → `/variant`) và **nói rõ đã chọn lệnh nào**.
 
 ## §12. OUTPUT CHUẨN CỦA `/landing`
 **A. Giả định** — nếu có, đặt ngay đầu.
