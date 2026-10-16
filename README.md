@@ -207,3 +207,4 @@ Danh sách đủ, kèm ai chốt: [`doc/CHANGELOG.md`](doc/CHANGELOG.md) mục *
 3. Landing sau đọc được dòng đó và ưu tiên pattern đã thắng cho **cùng kênh × cùng BL**.
 
 `KF-16` hiện **đang trống**. Mọi phát biểu kiểu "pattern này thắng" trước khi bảng đó có dữ liệu đều là **giả định**, và agent phải nói rõ là giả định.
+"# Agent-LDP-Kangnam" 
