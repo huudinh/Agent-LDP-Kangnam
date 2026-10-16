@@ -14,7 +14,7 @@ Không tối ưu cho lượt xem, time-on-page, hay độ "đẹp". Một trang 
 
 **<https://claude.ai/artifact/JvyWoqxudQFfN5szP2x5ZQ>**
 
-Trang hướng dẫn cài trong ~15 phút: **ba thẻ Copy sẵn** (bộ não · bản ngắn · tri thức gộp), các bước cho **Claude · ChatGPT · Gemini**, bảng **8 file tri thức** và **8 lệnh**, **42 mẫu prompt** copy được (có nhóm *Hỏi dẫn* cho người chưa có brief), hai cổng pháp lý cần người quyết kèm **checklist trước khi publish**, nguồn dữ liệu live và việc còn treo.
+Trang gồm đúng ba mục: **① Cài đặt** (3 tab Claude · ChatGPT · Gemini + ba thẻ Copy sẵn + bảng 8 file tri thức) · **② 42 prompt mẫu** copy được, 4 nhóm lọc (có nhóm *Hỏi dẫn* cho người chưa có brief) · **③ Kiến thức** — link bản đặc tả gốc, Album Kangnam và các file `knowledge/`.
 
 > Nội dung trong trang lấy thẳng từ repo này nên luôn khớp bản mới nhất. Dựng lại sau khi sửa knowledge: `python tools/build-huong-dan.py` rồi republish cùng URL.
 

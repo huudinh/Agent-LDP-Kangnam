@@ -2,6 +2,33 @@
 
 ---
 
+## v1.2.3 — 2026-10-16 · trang hướng dẫn rút về 3 mục
+
+Trang đang gánh quá nhiều thứ mà agent đã biết sẵn. Rút về đúng ba việc người dùng cần:
+**① cài đặt trên hệ thống AI · ② prompt mẫu · ③ link kiến thức.**
+
+**Bỏ hẳn bốn mục:** *Bảy/Tám lệnh* · *Trước khi publish* (cổng R4/R3 + checklist 10 ô) · *Dữ liệu* · *Việc còn treo*.
+Toàn bộ nội dung đó **vẫn nằm trong bộ não và `knowledge/`** — agent áp dụng khi chạy, người cài không cần đọc.
+
+**Gộp:** bảng 8 file tri thức chuyển vào trong mục Cài đặt (vì đó là việc phải upload), không còn là mục riêng.
+**Giữ một dòng:** tên 8 lệnh nằm gọn trong phần mở đầu mục Prompt mẫu.
+
+**Mục 3 — Kiến thức** chỉ còn bảng dẫn đường: [bản đặc tả gốc](https://claude.ai/artifact/SJqCtgkuSakBrbj2jQ9WD3) · [Album Kangnam](https://hcigroup.vn/app/albumkn/) · tám file `knowledge/` · output mẫu · tài liệu người mới. Giữ lại đúng một cảnh báo: **ảnh trong kho ≠ đã có consent**.
+
+Dọn luôn CSS và JS chết sau khi bỏ mục (`ul.check`, `.pill`, khối localStorage của checklist): template giảm 27.413 → 26.050 ký tự.
+
+**Kết quả:** phần chữ của trang còn **48 KB**, trong đó 23 KB là 42 thẻ prompt — thứ người ta mở trang để lấy.
+
+| Mục | Ký tự |
+|---|---|
+| 1 · Cài đặt (3 tab + 3 thẻ copy + bảng 8 file) | 6.775 |
+| 2 · Prompt mẫu (42 thẻ, 4 nhóm lọc) | 23.278 |
+| 3 · Kiến thức (bảng link) | 1.767 |
+
+> Checklist 10 ô trước khi publish đã bị bỏ khỏi trang. Nếu đội vận hành cần nó dạng tick được, nói để dựng thành một trang riêng thay vì nhồi lại vào đây.
+
+---
+
 ## v1.2.2 — 2026-10-16 · nối kho ảnh nội bộ Album Kangnam
 
 Trang công khai `/case-thuc-te/` vẫn trống, nhưng **ảnh case đã có sẵn** trong kho nội bộ: **Album Kangnam** — <https://hcigroup.vn/app/albumkn/> (*"Thư Viện Ảnh Theo Chủ Đề"* của HCI Group). Đã nối nguồn này vào tri thức.
