@@ -4,6 +4,7 @@ Cập nhật: 2026-10-16
 
 **Trang mẫu chuẩn:** `https://benhvienthammykangnam.com.vn/quyen-loi-thanh-vien/dep-ven-tron/` (bản lưu: `Agent-AdsOptimize-Kangnam/template/dep-ven-tron.html`)
 
+> ⚠️ **Font KHÔNG lấy từ trang mẫu nữa** — xem mục 6: landing của agent này dùng **Roboto**, trong khi `dep-ven-tron` chạy Be Vietnam Pro + Lora.
 > ⚠️ **Lấy GÌ và KHÔNG lấy gì từ trang mẫu.** Đây là trang quyền lợi thành viên (`noindex`, 3 section).
 > ✅ Lấy: token màu · khung trang · header/footer · form + bottom sheet · sticky/shimmer CTA · nhịp trình bày mobile.
 > ❌ **Không lấy cấu trúc nội dung** — 3 section của nó không phải khung landing chạy ads. Thứ tự màn lấy từ §6 của bộ não (9 màn).
@@ -159,28 +160,39 @@ Trang production đã giải xong bài form mobile:
 
 ---
 
-## 6. TYPOGRAPHY — hai font, không font thứ ba
+> ⚠️ **Hai nhánh landing Kangnam đang dùng hai font khác nhau — đây là lựa chọn, không phải lỗi.**
+>
+> | | Font | Nguồn production |
+> |---|---|---|
+> | **Agent này** (`Agent-LDP-Kangnam`) | **Roboto** | `/quyen-loi-thanh-vien/phau-thuat-tham-my-20-10/` |
+> | `Agent-CRM-Automation` | **Roboto** | cùng trang 20-10 |
+> | `Agent-AdsOptimize-Kangnam` | Be Vietnam Pro + Lora italic | `/quyen-loi-thanh-vien/dep-ven-tron/` |
+>
+> Trước 2026-10-16 agent này theo `dep-ven-tron` (Be Vietnam Pro + Lora). Nay **đổi sang Roboto** cho khớp nhánh LP ưu đãi và gói CRM. Token màu và khung trang **vẫn giữ theo `dep-ven-tron`** — chỉ font đổi.
+> ⛔ **Không trộn:** một trang dùng Roboto thì dùng Roboto cho tất cả, kể cả dòng pre.
+
+## 6. TYPOGRAPHY — một họ Roboto
 
 | Vai trò | Font | Weight |
 |---|---|---|
-| Toàn bộ body, nút, form, heading chính | **Be Vietnam Pro** (`--f`) | 400 · 500 · 700 · 800 |
-| Dòng "pre" của tiêu đề section, câu nhấn cảm xúc (`--f2`) | **Lora** *italic* | 600 |
+| Toàn bộ body, nút, form, heading chính | **Roboto** (`--f`) | 400 · 500 · 700 · 800 |
+| Dòng "pre" của tiêu đề section, câu nhấn cảm xúc (`--f2`) | **Roboto *italic*** | 500 · 600 |
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Lora:ital,wght@1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 ```
 
 ```css
---f:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
---f2:'Lora',Georgia,'Times New Roman',serif;
+--f:'Roboto',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+--f2:'Roboto',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;  /* dùng italic của cùng họ */
 ```
 
 - Body **15px/1.55**; **input bắt buộc 16px**.
-- `h1,h2,h3{line-height:1.2}` · `.sec-head .main` 26px/800 · `.sec-head .pre` Lora italic 18px.
-- Lora **chỉ** cho dòng pre và câu nhấn — không dùng cho đoạn văn.
-- ⛔ **Không nạp font thứ ba.** Cần nhấn thì đổi weight.
+- `h1,h2,h3{line-height:1.2}` · `.sec-head .main` 26px/800 · `.sec-head .pre` **Roboto italic 600** 18px.
+- *Italic* **chỉ** dùng cho dòng pre và câu nhấn cảm xúc — không dùng cho đoạn văn.
+- ⛔ **Không nạp font thứ hai.** Một họ Roboto, phân cấp bằng **weight và italic** — không thêm serif, không thêm display face.
 
 ---
 

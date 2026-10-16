@@ -2,6 +2,39 @@
 
 ---
 
+## v1.2.5 — 2026-10-16 · landing đổi sang font Roboto
+
+Font của landing đổi từ **Be Vietnam Pro + Lora italic** sang **Roboto**, khớp với gói [`Agent-CRM-Automation`](../Agent-CRM-Automation/) và trang production `/quyen-loi-thanh-vien/phau-thuat-tham-my-20-10/`.
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+```
+```css
+--f:'Roboto',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+--f2:'Roboto',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+```
+
+**Bỏ Lora.** Dòng "pre" của tiêu đề section trước đây là Lora serif italic, nay là **Roboto italic 600** — vẫn giữ nguyên vai trò và màu gold, chỉ đổi họ chữ. Luật *"không nạp font thứ ba"* thành **"không nạp font thứ hai"**: một họ Roboto, phân cấp bằng weight và italic.
+
+**Không đổi gì khác.** Token màu, khung trang 480px, form, sticky bar, footer vẫn theo `dep-ven-tron`. Cỡ chữ và line-height giữ nguyên (body 15px/1.55, input 16px, `.sec-head .main` 26px/800).
+
+### Ba nhánh landing Kangnam hiện tại
+
+| Gói | Font | Nguồn production |
+|---|---|---|
+| **Agent-LDP-Kangnam** | **Roboto** 🆕 | trang 20-10 |
+| Agent-CRM-Automation | Roboto | trang 20-10 |
+| Agent-AdsOptimize-Kangnam | Be Vietnam Pro + Lora | `dep-ven-tron` |
+
+> `Agent-AdsOptimize-Kangnam` **chưa đổi** — design system của nó kế thừa `dep-ven-tron`, đổi font ở đó sẽ làm landing Ads lệch khỏi trang nó đang bám. Cần brand chốt thì đổi sau, không tự quyết.
+
+### Sửa gì
+- `KF-09` mục 6 → bảng typography, link Google Fonts, token `--f`/`--f2`, ba dòng luật; thêm **bảng đối chiếu ba nhánh font** và cảnh báo ở đầu file rằng font không còn lấy từ trang mẫu.
+- `template/lp-skeleton.html` → link font + token + nhãn placeholder dòng pre.
+- Trang hướng dẫn dựng lại: thẻ copy `KF-09-design-system.md` và `lp-skeleton.html` nay chứa bản Roboto.
+
+---
+
 ## v1.2.4 — 2026-10-16 · trang hướng dẫn: tải ZIP + copy từng file
 
 Phản hồi: *"hơi khó cài đặt và chưa có download code"*. Làm theo khuôn của [`Agent-CRM-Automation`](../Agent-CRM-Automation/).
