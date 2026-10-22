@@ -99,14 +99,19 @@ Agent-LDP-Kangnam/
 │   ├── KF-15-block-library.md       24 mã khối landing
 │   ├── KF-09-design-system.md       token · khung trang · form
 │   └── KF-16-performance-log.md     vòng học (đang trống)
+├── goi/GOP-tri-thuc.md         bản gộp 8 file knowledge (101 KB) — đường dự phòng
+│                               khi nền tảng chặn số file. Sinh bằng tools/gop-tham-khao.py
 ├── template/lp-skeleton.html   khung HTML một file, 9 màn, mobile-first
-├── tools/                      fetch-du-lieu.py (chụp 5 nguồn live) · build-huong-dan.py (dựng trang hướng dẫn)
+├── tools/                      fetch-du-lieu.py (chụp 5 nguồn live) · build-huong-dan.py (dựng trang
+│                               hướng dẫn) · gop-tham-khao.py (sinh lại bản gộp)
 ├── prompts/                    42 prompt mẫu: wizard · landing · audit · variant
 ├── doc/                        cài đặt · câu lệnh · output mẫu · người mới · changelog
 └── out/                        nơi lưu output, file HTML đã dựng và snapshot dữ liệu
 ```
 
 **Thứ tự đọc của agent: pháp lý → hành vi → dữ liệu thương hiệu → thiết kế.** Đọc ngược là nguyên nhân của những trang phải làm lại.
+
+> **Chạm trần số file khi upload?** Gemini Gems chỉ cho 10 file. Dùng [`goi/GOP-tri-thuc.md`](goi/GOP-tri-thuc.md) thay cho cả 8 file `knowledge/` — nội dung giống hệt, mỗi phần mở đầu bằng dòng `===== tên file =====` nên mã `KF-xx` vẫn tra được. Đánh đổi: mất khả năng thay riêng một file, phải sinh lại cả bản gộp. Chi tiết ở [`doc/01-cai-dat.md`](doc/01-cai-dat.md).
 
 ---
 

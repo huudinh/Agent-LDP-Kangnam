@@ -2,6 +2,22 @@
 
 ---
 
+## Bản gộp dự phòng cho file tri thức — 22/10/2026
+
+Thêm 1 file gộp trong `goi/` và `tools/gop-tham-khao.py` để sinh lại:
+
+- `goi/GOP-tri-thuc.md` — gộp **8 file** `knowledge/` (101 KB)
+
+**Vì sao cần:** Gemini Gems chặn ở **10 file** tri thức, và upload hàng chục file một lượt rất hay lỗi. Gặp trần thì trước giờ không có đường nào ngoài bỏ bớt file — mà bỏ bớt file tri thức là bỏ bớt luật, và luật bị bỏ thường là luật pháp lý vì nó nằm ở file người ta tưởng không quan trọng.
+
+**Không mất nội dung nào.** Mỗi phần trong bản gộp mở đầu bằng dòng `===== tên file =====`, nên Agent vẫn đọc đúng từng module và tham chiếu chéo `[[tên-file]]` vẫn trỏ đúng — chỉ đổi chỗ nằm, không đổi mã. Đã đối chiếu từng byte với bản rời.
+
+**Đánh đổi, đã ghi vào `doc/01-cai-dat.md`:** dùng bản gộp thì **mất khả năng thay riêng một module** — sửa một file là phải sinh lại và upload lại cả bản gộp. **Bản rời vẫn là đường chính**; bản gộp chỉ để chữa cháy khi chạm trần.
+
+⛔ Không sửa tay file trong `goi/`. Sửa ở thư mục nguồn rồi chạy `python tools/gop-tham-khao.py`.
+
+---
+
 ## v1.2.5 — 2026-10-16 · landing đổi sang font Roboto
 
 Font của landing đổi từ **Be Vietnam Pro + Lora italic** sang **Roboto**, khớp với gói [`Agent-CRM-Automation`](../Agent-CRM-Automation/) và trang production `/quyen-loi-thanh-vien/phau-thuat-tham-my-20-10/`.
